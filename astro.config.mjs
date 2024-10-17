@@ -7,8 +7,7 @@ import alpinejs from "@astrojs/alpinejs";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://www.imn.htwk-leipzig.de/",
-	base: '/~mprokoph',
+  site: "https://htwk.midnightdust.eu/",
   compressHTML: true,
   integrations: [mdx(), icon(), tailwind({
     applyBaseStyles: false

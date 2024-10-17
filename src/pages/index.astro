@@ -1,6 +1,6 @@
 ---
 import DefaultLayout from '../layouts/DefaultLayout.astro'
-import Feature from '../components/Feature.astro'
+import FancyLink from '../components/FancyLink.astro'
 ---
 
 <DefaultLayout title="HubTWK">
@@ -12,24 +12,24 @@ import Feature from '../components/Feature.astro'
         <div class="container">
           <h2 class="mt-8 mb-4 text-6l">Wichtige Links</h2>
           <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
-            <Feature href="https://bildungsportal.sachsen.de/opal/shiblogin?1" icon="ion:create-outline" title="OPAL">
+            <FancyLink href="https://bildungsportal.sachsen.de/opal/shiblogin?1" icon="ion:create-outline" title="OPAL">
               Zentrale Verwaltung und Verteilung von Aufgaben für nahezu alle Kurse.
-            </Feature>
-            <Feature href="https://autotool.imn.htwk-leipzig.de/new/semester/98/vorlesungen" icon="ion:checkmark-done-circle-outline" title="Autotool" subtitle="Wintersemester 2024/25">
+            </FancyLink>
+            <FancyLink href="https://autotool.imn.htwk-leipzig.de/new/semester/98/vorlesungen" icon="ion:checkmark-done-circle-outline" title="Autotool" subtitle="Wintersemester 2024/25">
               Von einigen Professor:innen für Aufgabenverteilung genutzt.<br>Entwickelt von Prof. Waldmann.
-            </Feature>
-            <Feature href="https://studium.htwk-leipzig.de/" icon="ion:golf-outline" title="Studienportal">
+            </FancyLink>
+            <FancyLink href="https://studium.htwk-leipzig.de/" icon="ion:golf-outline" title="Studienportal">
               Übersicht deiner Leistungen und Studienbescheinigungen, sowie Verwaltung von Nutzerdaten.
-            </Feature>
-            <Feature href="https://cloud.imn.htwk-leipzig.de/" icon="ion:cloud-outline" title="Nextcloud">
+            </FancyLink>
+            <FancyLink href="https://cloud.imn.htwk-leipzig.de/" icon="ion:cloud-outline" title="Nextcloud">
               Arbeite gemeinsam mit Kommiliton:innen an Dokumenten und sichere deine Daten.
-            </Feature>
-            <Feature href="https://gitlab.dit.htwk-leipzig.de/" icon="ion:logo-gitlab" title="GitLab">
+            </FancyLink>
+            <FancyLink href="https://gitlab.dit.htwk-leipzig.de/" icon="ion:logo-gitlab" title="GitLab">
               Realisiere Softwareprojekte mit Zusammenarbeit und Versionskontrolle.
-            </Feature>
-            <Feature href="https://modulux.htwk-leipzig.de/app-modulux/frontend/studiengaenge/" icon="ion:dice-outline" title="Modulux">
+            </FancyLink>
+            <FancyLink href="https://modulux.htwk-leipzig.de/app-modulux/frontend/studiengaenge/" icon="ion:dice-outline" title="Modulux">
               Erfahre alles Relevante zu den Modulen deines Studienganges.
-            </Feature>
+            </FancyLink>
           </div>
         </div>
       </section>
