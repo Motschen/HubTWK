@@ -1,0 +1,23 @@
+---
+import { Icon } from 'astro-icon/components'
+const { icon = 'mdi:rocket', count, title, sub } = Astro.props
+---
+
+<div class="counter text-center">
+  <Icon name={icon} />
+  <p class="text-6xl font-bold">{count}</p>
+  <p class="text-4xl font-semibold">{title}</p>
+  <p class="text-2xl">{sub}</p>
+</div>
+
+<style lang="scss">
+  div > p:first-child {
+    color: var(--action-color);
+  }
+  :global(.counter [data-icon]) {
+    display: block;
+    margin: 0px auto 1rem auto;
+    height: auto;
+    width: 4rem;
+  }
+</style>

@@ -1,0 +1,72 @@
+---
+import Navigation from '../components/Navigation.astro'
+import { SkipLinks } from 'accessible-astro-components'
+import { Icon } from 'astro-icon/components'
+---
+
+<header class="sticky top-0 z-50 backdrop-blur-md">
+  <SkipLinks />
+  <Navigation>
+    <li class="menu-item">
+      <a href="/">Home</a>
+    </li>
+    <li class="menu-item">
+      <a href="/seminargruppenplan/">Seminarplan</a>
+    </li>
+    <li class="menu-item">
+      <a href="/mensa/">Mensa</a>
+    </li>
+    <li class="menu-item has-dropdown">
+      <button aria-haspopup="true" aria-expanded="false">Werkzeuge</button>
+      <ul class="dropdown-menu">
+        <li class="submenu-item">
+          <a href="/colorpicker">Farbauswahl</a>
+        </li>
+      </ul>
+    </li>
+    <li class="menu-item has-dropdown">
+      <button aria-haspopup="true" aria-expanded="false">Weitere Links</button>
+      <ul class="dropdown-menu">
+        <li class="submenu-item">
+          <a rel="noopener noreferrer external" target="_blank" href="https://www.imn.htwk-leipzig.de/~schwarz/lehre/ws24/modellierung/">Modellierung Frau Schwarz</a>
+        </li>
+      </ul>
+    </li>
+    <li class="menu-item type-icon">
+      <a href="https://github.com/Motschen" title="View my GitHub profile">
+        <Icon name="simple-icons:github" />
+      </a>
+    </li>
+  </Navigation>
+</header>
+
+<style lang="scss" is:global>
+  @use '../assets/scss/base/outline' as *;
+
+  header {
+    background-color: rgb(249, 250, 255, 0.75);
+
+    .type-icon a {
+      display: block;
+
+      [data-icon] {
+        height: auto;
+        margin-top: -2px;
+        width: 28px;
+
+        path {
+          fill: var(--action-color);
+        }
+      }
+
+      &:hover {
+        [data-icon] path {
+          fill: var(--action-color-state);
+        }
+      }
+    }
+  }
+  header:is(.darkmode *) {
+    background-color: rgba(18, 18, 18, 0.75);
+  }
+</style>

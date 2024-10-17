@@ -1,0 +1,71 @@
+---
+interface Props {
+  imgBefore: string
+  imgAfter: string
+  captionBefore?: string
+  captionAfter?: string
+}
+const { imgBefore, imgAfter, captionBefore, captionAfter } = Astro.props
+---
+
+<img-comparison-slider class="slider-with-animated-handle">
+  <figure slot="first" class="before">
+    <img width="100%" src={imgBefore}>
+    {captionBefore ? <figcaption>{captionBefore}</figcaption> : ""}
+  </figure>
+  <figure slot="second" class="after">
+    <img width="100%" src={imgAfter}>
+    {captionAfter ? <figcaption>{captionAfter}</figcaption> : ""}
+  </figure>
+</img-comparison-slider>
+
+<style lang="scss" is:global>
+  #handle {
+    transition: transform 0.2s;
+  }
+
+  #handle:hover #handle {
+    transform: scale(1.2);
+  }
+  img-comparison-slider:focus, img-comparison-slider:focus-visible {
+    outline: unset;
+    box-shadow: unset;
+  }
+  .before,
+  .after {
+    margin: 0;
+  }
+
+  .before figcaption,
+  .after figcaption {
+    background: #fff;
+    border: 1px solid #c0c0c0;
+    border-radius: 12px;
+    color: #2e3452;
+    opacity: 0.8;
+    padding: 12px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    line-height: 100%;
+  }
+
+  .before figcaption {
+    left: 12px;
+  }
+
+  .after figcaption {
+    right: 12px;
+  }
+</style>
+
+<script>
+  import "img-comparison-slider/dist/index"
+  import "img-comparison-slider/dist/styles.css"
+</script>
+
+<!-- <script>
+import { HTMLImgComparisonSliderElement } from "img-comparison-slider";
+
+customElements.define('img-comparison-slider', HTMLImgComparisonSliderElement);
+</script> -->

@@ -1,0 +1,86 @@
+---
+interface Props {
+  includeHashtag?: boolean
+}
+const { } = Astro.props
+import { Icon } from 'astro-icon/components'
+---
+<seminar-auswahl>
+  <h2 id="current-semester" class="my-8 text-5l text-center">Wintersemester 2024/25</h2>
+  <section class="my-6">
+    <div class="">
+      <p class="text-lg">Geben Sie Ihre Seminargruppe ein:</p>
+      <div class="flex">
+        <label class="sr-only">Geben Sie Ihre Seminargruppe ein</label>
+        <input id="gruppe-input" placeholder="(e.g: 24MIB-2)" type="text" class="selector cursor-text rounded-md pl-3 pr-2 py-1.5 border-2 dark:border-green-300 dark:bg-neutral-800 dark:text-white focus-visible:outline-none">
+        <select
+          id="week-selector"
+          class="selector cursor-pointer rounded-md ml-2 pl-3 pr-2 py-1.5 border-2 dark:border-green-300 dark:bg-neutral-800 dark:text-white focus-visible:outline-none"
+          aria-label="Wählen Sie die Woche">
+        </select>
+
+        <button
+          id="open-button"
+          class="button has-icon color-secondary ml-3 rounded-md text-white hover:cursor-pointer appearance-none h-16">
+          <Icon id="copy-icon" name="ion:open-outline" />
+          <Icon id="success-icon" name="ion:checkmark-outline" class="hidden" />
+          <p id="color-label">Plan öffnen</p>
+      </div>
+    </div>
+  </section>
+</seminar-auswahl>
+
+<script>
+  import { getISOWeek, setISOWeek, startOfISOWeek, endOfISOWeek } from "date-fns";
+
+  // Define the behaviour for our new type of HTML element.
+  class Seminarauswahl extends HTMLElement {
+    connectedCallback() {
+      // Get the 2 elements from above
+      const gruppeInput = document.getElementById("gruppe-input");
+      const weekSelector = document.getElementById("week-selector");
+      const openButton = document.getElementById("open-button");
+
+      const initialGroup = localStorage.getItem('seminargruppe');
+      if (initialGroup && gruppeInput) {
+        gruppeInput.value = initialGroup;
+      }
+      if (weekSelector) {
+        let currentWeek = getISOWeek(new Date());
+        if (new Date().getMonth() <= 3) currentWeek += 52; // Planungswochen werden auch nach dem Jahreswechsel fortlaufend nummeriert
+
+        // Adds every following week to the selector
+        for (var i = currentWeek; i <= 61; i++) {
+          let weekName = 'Woche '+i;
+          if (i === currentWeek) weekName += ' (aktuelle Woche)';
+          else {
+            let otherWeek = setISOWeek(new Date(), i);
+            weekName += ' ('+startOfISOWeek(otherWeek).toLocaleDateString('de-DE') + ' - ' + endOfISOWeek(otherWeek).toLocaleDateString('de-DE')+')';
+          }
+          weekSelector.options[weekSelector.options.length] = new Option(weekName, i.toString());
+          console.log(i);
+        }
+        weekSelector.value = currentWeek;
+      }
+      
+
+      gruppeInput?.addEventListener("input", async (e) => {
+        const {
+          target: { value },
+        } = e;
+        localStorage.setItem('seminargruppe', value);
+      });
+
+      openButton?.addEventListener('click', () => {
+        let seminargruppe = localStorage.getItem('seminargruppe');
+        let weekNumber;
+        if (weekSelector) weekNumber = weekSelector.value;
+        window.open(`https://stundenplan.htwk-leipzig.de/ws/Berichte/Text-Listen;Studenten-Sets;name;${seminargruppe}?template=sws_semgrp_js&weeks=${weekNumber}`);
+      });
+    }
+  }
+
+  
+  // Tell the browser to use our ColorPicker class for <color-picker> elements.
+  customElements.define('seminar-auswahl', Seminarauswahl);
+</script>

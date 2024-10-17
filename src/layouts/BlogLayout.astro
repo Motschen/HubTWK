@@ -1,0 +1,24 @@
+---
+import DefaultLayout from './DefaultLayout.astro'
+import { Breadcrumbs, BreadcrumbsItem } from 'accessible-astro-components'
+
+const { frontmatter } = Astro.props
+---
+
+<DefaultLayout title={frontmatter.title}>
+  <div class="container">
+    <div class="mt-12">
+      <Breadcrumbs>
+        <BreadcrumbsItem href="/" label="Home" />
+        <BreadcrumbsItem href="/blog" label="Blog" />
+        <BreadcrumbsItem currentPage={true} label={frontmatter.title} />
+      </Breadcrumbs>
+    </div>
+    <div class="space-content my-12">
+      <h1>{frontmatter.title}</h1>
+      <slot />
+      <h5>Written by {frontmatter.author}</h5>
+      <h7>Published: {frontmatter.date}</h7>
+    </div>
+  </div>
+</DefaultLayout>

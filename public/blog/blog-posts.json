@@ -1,0 +1,18 @@
+[
+  {
+    "postId": "life-is-changing",
+    "userId": "Martin Prokoph",
+    "date": "11th October 2024",
+    "title": "Life is changing",
+    "body": "A retrospective of my Modding journey so far, and an outlook into the future",
+    "img": "/blog/life/leipzig.jpg"
+  },
+  {
+    "postId": "new-website",
+    "userId": "Martin Prokoph",
+    "date": "09th February 2024",
+    "title": "So... I have a new website now!",
+    "body": "I finally revamped my website, making it more performant, accessible and useful!",
+    "img": "/social-preview-image.png"
+  }
+]

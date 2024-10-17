@@ -1,0 +1,26 @@
+---
+import DefaultLayout from '../layouts/DefaultLayout.astro'
+import Feature from '../components/Feature.astro'
+import CallToAction from '../components/CallToAction.astro'
+import ContentMedia from '../components/ContentMedia.astro'
+import Seminarauswahl from '../components/Seminarauswahl.astro'
+import { Notification } from 'accessible-astro-components'
+import { Icon } from 'astro-icon/components'
+---
+
+<DefaultLayout title="Seminargruppenplan">
+  <h2 class="my-8 text-6xl text-center">Seminargruppenplan</h2>
+  <section class="my-12">
+    <div class="space-content container">
+      <Seminarauswahl></Seminarauswahl>
+
+      <Notification type="info">
+        <Icon name="ion:information-circle-outline" />
+        <p>
+          <strong>Disclaimer:</strong> Diese Seite ist <b>inoffiziell</b>.<br>Überprüfen Sie im Zweifelfall, ob Gruppe und Woche korrekt sind.
+        </p>
+      </Notification> 
+    </div>
+  </section>
+ 
+</DefaultLayout>
