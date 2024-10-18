@@ -3,7 +3,7 @@ import mdx from '@astrojs/mdx';
 import tailwind from '@astrojs/tailwind';
 import icon from "astro-icon";
 
-import alpinejs from "@astrojs/alpinejs";
+import AstroPWA from '@vite-pwa/astro'
 
 // https://astro.build/config
 export default defineConfig({
@@ -11,5 +11,5 @@ export default defineConfig({
   compressHTML: true,
   integrations: [mdx(), icon(), tailwind({
     applyBaseStyles: false
-  }), alpinejs()]
+  }), AstroPWA()],
 });

@@ -1,0 +1,57 @@
+---
+interface Props {}
+const { } = Astro.props
+---
+<seminar-auswahl>
+  <section class="my-6">
+    <div class="">
+      <p class="text-lg">Primzahlenzerlegung:</p>
+      <div class="flex">
+        <input id="number-input" placeholder="123456789" type="text" class="selector cursor-text rounded-md pl-3 pr-2 py-1.5 border-2 dark:border-green-300 dark:bg-neutral-800 dark:text-white focus-visible:outline-none">
+      </div>
+      <p id="result-label">Lösung</p>
+    </div>
+  </section>
+</seminar-auswahl>
+
+<script>
+  // Define the behaviour for our new type of HTML element.
+  class Seminarauswahl extends HTMLElement {
+    connectedCallback() {
+      // Get the 2 elements from above
+      const numberInput = document.getElementById("number-input");
+      const resultLabel = document.getElementById("result-label");
+      
+      numberInput?.addEventListener("input", () => primzahlenZerlegung(numberInput.value));
+
+      function primzahlenZerlegung(value) {
+        const parsedValue = parseInt(value);
+        var currentValue = parsedValue;
+        var calculation = parsedValue + " = ";
+        var currentResult = 1;
+
+        while (currentResult != parsedValue) {
+          let divider: number = 2;
+          while (currentValue % divider != 0 && divider <= parsedValue) {
+            divider++;
+          }
+          if (divider >= parsedValue) {
+            calculation = "Keine Primzahlenzerlegung für diese Zahl möglich";
+            break;
+          }
+
+          currentValue = currentValue / divider;
+
+          if (currentResult != 1) calculation += " * ";
+          calculation += divider;
+          currentResult *= divider;
+        }
+
+        if (resultLabel) resultLabel.innerText = calculation;
+      }
+    }
+  }
+  
+  // Tell the browser to use our custom class for elements.
+  customElements.define('seminar-auswahl', Seminarauswahl);
+</script>
