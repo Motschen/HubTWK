@@ -12,9 +12,9 @@
     "pwa:generate-assets": "pwa-assets-generator --preset minimal public/logo.svg"
   },
   "devDependencies": {
-    "@astrojs/mdx": "^3.1.6",
+    "@astrojs/mdx": "^3.1.8",
     "@astrojs/partytown": "^2.1.2",
-    "@astrojs/tailwind": "^5.1.1",
+    "@astrojs/tailwind": "^5.1.2",
     "@iconify-json/ion": "^1.2.0",
     "@iconify-json/mdi": "^1.2.0",
     "@iconify-json/simple-icons": "^1.2.3",
@@ -22,7 +22,7 @@
     "@typescript-eslint/parser": "^8.6.0",
     "@vite-pwa/astro": "^0.4.3",
     "accessible-astro-components": "^2.3.6",
-    "astro": "^4.15.7",
+    "astro": "^4.16.6",
     "astro-compress": "^2.3.1",
     "astro-icon": "^1.1.1",
     "eslint": "^9.10.0",
