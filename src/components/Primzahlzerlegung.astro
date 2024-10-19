@@ -2,7 +2,7 @@
 interface Props {}
 const { } = Astro.props
 ---
-<seminar-auswahl>
+<primzahl-zerlegung>
   <section class="my-6">
     <div class="">
       <p class="text-lg">Primzahlenzerlegung:</p>
@@ -12,11 +12,11 @@ const { } = Astro.props
       <p id="result-label">Lösung</p>
     </div>
   </section>
-</seminar-auswahl>
+</primzahl-zerlegung>
 
 <script>
   // Define the behaviour for our new type of HTML element.
-  class Seminarauswahl extends HTMLElement {
+  class Primzahlzerlegung extends HTMLElement {
     connectedCallback() {
       // Get the 2 elements from above
       const numberInput = document.getElementById("number-input");
@@ -53,5 +53,5 @@ const { } = Astro.props
   }
   
   // Tell the browser to use our custom class for elements.
-  customElements.define('seminar-auswahl', Seminarauswahl);
+  customElements.define('primzahl-zerlegung', Primzahlzerlegung);
 </script>

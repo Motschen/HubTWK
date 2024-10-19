@@ -10,18 +10,18 @@ import { Icon } from 'astro-icon/components'
   <section class="my-6">
     <div class="">
       <p class="text-lg">Geben Sie Ihre Seminargruppe ein:</p>
-      <div class="flex">
+      <div class="column lg:flex basis-2">
         <label class="sr-only">Geben Sie Ihre Seminargruppe ein</label>
         <input id="gruppe-input" placeholder="(e.g: 24MIB-2)" type="text" class="selector cursor-text rounded-md pl-3 pr-2 py-1.5 border-2 dark:border-green-300 dark:bg-neutral-800 dark:text-white focus-visible:outline-none">
         <select
           id="week-selector"
-          class="selector cursor-pointer rounded-md ml-2 pl-3 pr-2 py-1.5 border-2 dark:border-green-300 dark:bg-neutral-800 dark:text-white focus-visible:outline-none"
+          class="selector cursor-pointer rounded-md mt-3 lg:mt-0 lg:ml-2 pl-3 pr-2 py-1.5 border-2 dark:border-green-300 dark:bg-neutral-800 dark:text-white focus-visible:outline-none"
           aria-label="Wählen Sie die Woche">
         </select>
 
         <button
           id="open-button"
-          class="button has-icon color-secondary ml-3 rounded-md text-white hover:cursor-pointer appearance-none h-16">
+          class="button has-icon color-secondary ml-0 mt-3 content-center lg:mt-0 lg:ml-3 rounded-md text-white hover:cursor-pointer appearance-none h-16">
           <Icon id="copy-icon" name="ion:open-outline" />
           <Icon id="success-icon" name="ion:checkmark-outline" class="hidden" />
           <p id="color-label">Plan öffnen</p>
@@ -58,7 +58,6 @@ import { Icon } from 'astro-icon/components'
             weekName += ' ('+startOfISOWeek(otherWeek).toLocaleDateString('de-DE') + ' - ' + endOfISOWeek(otherWeek).toLocaleDateString('de-DE')+')';
           }
           weekSelector.options[weekSelector.options.length] = new Option(weekName, i.toString());
-          console.log(i);
         }
         weekSelector.value = currentWeek;
       }
@@ -68,7 +67,7 @@ import { Icon } from 'astro-icon/components'
         const {
           target: { value },
         } = e;
-        localStorage.setItem('seminargruppe', value);
+        localStorage.setItem('seminargruppe', value.replace(' ', ''));
       });
 
       openButton?.addEventListener('click', () => {

@@ -16,8 +16,8 @@ import { Icon } from 'astro-icon/components'
           class="h-16 w-48 hover:cursor-pointer rounded-xl border-neutral-900 dark:border-neutral-100 border-4"
         />
       </fieldset>
-      <div class="flex">
-        <div class="row ml-3">
+      <div class="column md:flex basis-2">
+        <div class="">
           <label>HEX-Code:</label>
           <button
             id="hex-button"
@@ -27,21 +27,21 @@ import { Icon } from 'astro-icon/components'
             <Icon class="success-icon hidden" name="ion:checkmark-outline" />
           </button>
         </div>
-        <div class="row ml-3">
+        <div class="md:ml-3">
           <label>RGB-Wert:</label>
           <button
             id="rgb-button"
-            class="copy-button button has-icon color-secondary ml-3 rounded-md text-white hover:cursor-pointer appearance-none h-16">
+            class="copy-button button has-icon color-secondary md:ml-3 rounded-md text-white hover:cursor-pointer appearance-none h-16">
             <p id="rgb-color-label">rgb(0, 0, 0)</p>
             <Icon class="copy-icon" name="ion:copy-outline" />
             <Icon class="success-icon hidden" name="ion:checkmark-outline" />
           </button>
         </div>
-        <div class="row ml-3">
+        <div class="md:ml-3">
           <label>HSL-Wert:</label>
           <button
             id="hsl-button"
-            class="copy-button button has-icon color-secondary ml-3 rounded-md text-white hover:cursor-pointer appearance-none h-16">
+            class="copy-button button has-icon color-secondary md:ml-3 rounded-md text-white hover:cursor-pointer appearance-none h-16">
             <p id="hsl-color-label">hsl(0, 0%, 0%)</p>
             <Icon class="copy-icon" name="ion:copy-outline" />
             <Icon class="success-icon hidden" name="ion:checkmark-outline" />
@@ -49,7 +49,7 @@ import { Icon } from 'astro-icon/components'
         </div>
         <button
           id="colorhexa-button"
-          class="button has-icon color-main ml-9 mt-6 rounded-md text-white hover:cursor-pointer appearance-none h-16">
+          class="button has-icon color-main md:ml-9 mt-6 rounded-md text-white hover:cursor-pointer appearance-none h-16">
           <p id="hsl-color-label">Mehr auf ColorHexa</p>
           <Icon class="copy-icon" name="ion:open-outline" />
           <Icon class="success-icon hidden" name="ion:checkmark-outline" />
