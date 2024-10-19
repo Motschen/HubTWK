@@ -1,0 +1,102 @@
+---
+import DefaultLayout from '../layouts/DefaultLayout.astro'
+import LinuxCommands from '../components/LinuxCommands.astro'
+
+const fileManagementCommands = [
+	{
+		title: "Navigation im Dateisystem",
+		icon: "ion:compass-outline",
+		description: 
+		"<strong>ls</strong> – Zeigt die Inhalte des aktuellen Arbeitsverzeichnisses"+"<br>"+
+		"<strong>cd</strong> – Wechselt zum Homeverzeichnis (= dein Benutzerverzeichnis in /home/{Benutzername})"+"<br>"+
+		"<strong>cd ..</strong> – Wechselt zum übergeordneten Verzeichnis"+"<br>"+
+		"<strong>cd {Ordner}</strong> – Ändert das aktuelle Arbeitsverzeichnis zum angegebenen Ordner"+"<br>"+
+		"<strong>cd /</strong> – Wechselt zum Wurzelverzeichnis (Systemdateien, nur als Admin)"+"<br>",
+	},
+	{
+		title: "Aktionen im Dateisystem",
+		icon: "ion:document-outline",
+		description: 
+		"<strong>mkdir {Ordner}</strong> – Legt ein neues Verzeichnis an"+"<br>"+
+		"<strong>cp {Quelldatei/-ordner} {Zieldatei/-ordner}</strong> – Kopiert eine Datei oder ein Verzeichnis"+"<br>"+
+		"<strong>mv {Quelldatei/-ordner} {Zieldatei/-ordner}</strong> – Verschiebt eine Datei oder ein Verzeichnis"+"<br>"+
+		"<strong>rm {Datei(en)}</strong> – Löscht Datei(en) dauerhaft"+"<br>"+
+		"<strong>rm -r {Ordner}</strong> – (rekursiv) Löscht einen Ordner mitsamt seinen Inhalten dauerhaft"+"<br>"+
+		"<strong>rm -f {Datei(en)}</strong> – (force) Löscht auch geschützte Datei(en) dauerhaft"+"<br>"+
+		"<strong>nano {Datei}</strong> – Textdateien ansehen, bearbeiten und (wenn nicht vorhanden) erstellen"+"<br>",
+	},
+  {
+		title: "Verwaltung von Dateirechten",
+		icon: "ion:document-lock-outline",
+		description: 
+		"<strong>chmod u+rwx {Datei/-ordner}</strong> – Gibt dem [u]Besitzer [r]Lese- [w]Schreib- und [x]Ausführrechte für die angegebene Datei"+"<br>"+
+    "<strong>chmod g+rw {Datei/-ordner}</strong> – Gibt der [g]Gruppe [r]Lese- und [w]Schreib-rechte für die angegebene Datei"+"<br>"+
+    "<strong>chmod a+r {Datei/-ordner}</strong> – Gibt [a]allen Nutzern [r]Leserechte für die angegebene Datei"+"<br>",
+	},
+	{
+		title: "Netzwerkzugriff",
+		icon: "ion:globe-outline",
+		description: 
+		"<strong>ssh {nutzername}@{host}</strong> – Auf Kommandozeile eines entfernten Rechners zugreifen"+"<br>"+
+		"<strong>ssh {nutzername}@{host} -p {port}</strong> – Auf Kommandozeile eines entfernten Rechners mit geändertem Port zugreifen"+"<br>"+
+    "<strong>scp {Quelldatei} {nutzername}@{host}:{Zieldatei}</strong> – Kopiert eine Datei vom lokalen auf einen entfernten Rechner"+"<br>"+
+    "<strong>scp -r {Quellordner} {nutzername}@{host}:{Zielordner}</strong> – Kopiert einen Ordner vom lokalen auf einen entfernten Rechner"+"<br>",
+	},
+];
+const utilityCommands = [
+	{
+		title: "Systeminformationen",
+		icon: "ion:hardware-chip-outline",
+		description: 
+		"<strong>cat /etc/lsb-release</strong> – Erfahre Name und Version der Linux-Distribution"+"<br>"+
+		"<strong>htop</strong> – Zeigt laufende Prozesse und die Ressourcennutzung"+"<br>",
+	},
+  {
+		title: "Administration",
+		icon: "ion:build-outline",
+		description: 
+		"<strong>su</strong> – Wechselt zum Superuser (root)"+"<br>"+
+		"<strong>su {Nutzername}</strong> – Wechselt zum definierten Benutzer"+"<br>"+
+    "<strong>sudo {Befehl}</strong> – Führt einen Befehl mit root-Privilegien aus"+"<br>",
+	},
+];
+const packagingCommands = [
+{
+		title: "Alpine Linux",
+		icon: "simple-icons:alpinelinux",
+		description: 
+		"<strong>apk add {Paketname}</strong> – Installiere ein Paket"+"<br>"+
+		"<strong>apk del {Paketname}</strong> – Entferne ein Paket"+"<br>",
+	},
+	{
+		title: "Arch Linux",
+		icon: "simple-icons:archlinux",
+		description: 
+		"<strong>pacman -S {Paketname}</strong> – Installiere ein Paket"+"<br>"+
+		"<strong>pacman -R {Paketname}</strong> – Entferne ein Paket"+"<br>",
+	},
+  {
+		title: "Debian Linux",
+		icon: "simple-icons:debian",
+		description: 
+		"<strong>apt install {Paketname}</strong> – Installiere ein Paket"+"<br>"+
+		"<strong>apt remove {Paketname}</strong> – Entferne ein Paket"+"<br>",
+	},
+];
+---
+
+<DefaultLayout title="Linux-Befehle">
+  <section class="my-12">
+    <div class="container">
+      <h1>Linux-Befehle</h1>
+    </div>
+  </section>
+  <section class="my-12">
+    <div class="space-content container">
+      <p class="text-2xl">Mit diesen Befehlen meisterst du Linux im Handumdrehen</p>
+      <LinuxCommands title="Dateimanagement" commands={fileManagementCommands} />
+      <LinuxCommands title="Werkzeuge" commands={utilityCommands} />
+      <LinuxCommands title="Paketverwaltung (mit Adminrechten)" commands={packagingCommands} />
+    </div>
+  </section>
+</DefaultLayout>

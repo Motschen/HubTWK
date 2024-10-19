@@ -2,16 +2,20 @@ import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import tailwind from '@astrojs/tailwind';
 import icon from "astro-icon";
-
+import alpinejs from "@astrojs/alpinejs";
 import AstroPWA from '@vite-pwa/astro'
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://htwk.midnightdust.eu/",
   compressHTML: true,
-  integrations: [mdx(), icon(), tailwind({
-    applyBaseStyles: false
-  }), AstroPWA({
+  integrations: [mdx(), 
+    icon(), 
+    tailwind({
+      applyBaseStyles: false
+    }),
+    alpinejs(),
+    AstroPWA({
     mode: "production",
     base: "/",
     scope: "/",
