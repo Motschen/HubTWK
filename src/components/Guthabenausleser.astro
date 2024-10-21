@@ -1,0 +1,87 @@
+---
+interface Props {
+  includeHashtag?: boolean
+}
+const { } = Astro.props
+import { Icon } from 'astro-icon/components'
+---
+<guthaben-ausleser>
+  <h2 id="current-semester" class="my-8 text-5l text-center">NFC-Kartenleser</h2>
+  <section class="my-6">
+    <div class="">
+      <div class="flex flex-col place-items-center self-center content-center">
+        <button
+          id="scan-button"
+          class="button mb-4 has-icon color-secondary mt-3 lg:mt-0 rounded-md text-white hover:cursor-pointer appearance-none h-16">
+          <Icon name="mdi:nfc" />
+          <p>NFC-Karte scannen</p>
+        </button>
+        <p id="nfc-output">Funktioniert nur mit Chromium-basierten Browsern auf Android-Geräten</p>
+      </div>
+    </div>
+  </section>
+</guthaben-ausleser>
+
+<script>
+  // Define the behaviour for our new type of HTML element.
+  class Guthabenausleser extends HTMLElement {
+    connectedCallback() {
+      // Get the 2 elements from above
+      const scanButton = document.getElementById("scan-button");
+      const nfcOutput = document.getElementById("nfc-output");
+
+      var log = "";
+      
+      scanButton?.addEventListener('click', async () => {
+        log = "User clicked scan button";
+
+        try {
+          const ndef = new NDEFReader();
+          await ndef.scan();
+          log += "> Scan started";
+
+          ndef.addEventListener("readingerror", () => {
+            log = "Argh! Cannot read data from the NFC tag. Try another one?";
+            if (nfcOutput) nfcOutput.innerText = log;
+          });
+
+          ndef.addEventListener("reading", (event) => {
+            const message = event.message;
+            log = `> Serial Number: ${event.serialNumber}`; log+="\n";
+            log += `> Records: (${message.records.length})`; log+="\n"; log+="\n";
+            for (const record of message.records) {
+              log += ("Record type:  " + record.recordType); log+="\n";
+              log += ("MIME type:    " + record.mediaType); log+="\n";
+              log += ("Record id:    " + record.id); log+="\n";
+              log += ("Record data:    " + (record.data ? record.data.getBigInt64() : "null")); log+="\n";
+              log += ("Record encoding:    " + record.encoding); log+="\n";
+              log += ("Record lang:    " + record.lang); log+="\n";
+              switch (record.recordType) {
+                case "text":
+                  const textDecoder = new TextDecoder(record.encoding);
+                  log += (`Text: ${textDecoder.decode(record.data)} (${record.lang})`);
+                  log+="\n";
+                  // TODO: Read text record with record data, lang, and encoding.
+                  break;
+                case "url":
+                  // TODO: Read URL record with record data.
+                  break;
+                default:
+                  // TODO: Handle other records with record data.
+              }
+              log+="\n";
+            }
+            if (nfcOutput) nfcOutput.innerText = log;
+          });
+        } catch (error) {
+          log += "Argh! " + error;
+        }
+        if (nfcOutput) nfcOutput.innerText = log;
+      });
+    }
+  }
+
+  
+  // Tell the browser to use our ColorPicker class for <color-picker> elements.
+  customElements.define('guthaben-ausleser', Guthabenausleser);
+</script>

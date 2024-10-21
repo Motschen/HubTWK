@@ -4,10 +4,10 @@ const { title, commands } = Astro.props;
 import { Icon } from 'astro-icon/components'
 ---
 
-<div id="collapsible-list" class="mx-auto px-6 py-8 lg:px-4">
+<div id="collapsible-list" class="mx-auto py-8">
 	<div class="mx-auto divide-y divide-gray-900/10 dark:divide-gray-100/10">
 		<h2 class="text-2xl font-bold leading-10 tracking-tight text-gray-900 dark:text-white">{title}</h2>
-		<dl class="mt-10 space-y-6 divide-y divide-gray-900/10 dark:divide-gray-100/10">
+		<dl class="mt-10 px-4 space-y-6 divide-y divide-gray-900/10 dark:divide-gray-100/10">
 			{
 				commands.map((command) => (
 					<div class="pt-6 " x-data="{ open: false }">
