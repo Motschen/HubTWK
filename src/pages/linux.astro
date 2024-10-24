@@ -25,7 +25,7 @@ const fileManagementCommands = [
 		"<code><strong>rm -f {Datei(en)}</strong></code> – (force) Löscht auch geschützte Datei(en) dauerhaft"+"<br>"+
 		"<code><strong>nano {Datei}</strong></code> – Textdateien ansehen, bearbeiten und (wenn nicht vorhanden) erstellen"+"<br>",
 	},
-  {
+  	{
 		title: "Verwaltung von Dateirechten",
 		icon: "ion:document-lock-outline",
 		description: 
@@ -51,17 +51,17 @@ const utilityCommands = [
 		"<code><strong>cat /etc/lsb-release</strong></code> – Erfahre Name und Version der Linux-Distribution"+"<br>"+
 		"<code><strong>htop</strong></code> – Zeigt laufende Prozesse und die Ressourcennutzung"+"<br>",
 	},
-  {
+  	{
 		title: "Administration",
 		icon: "ion:build-outline",
 		description: 
 		"<code><strong>su</strong></code> – Wechselt zum Superuser (root)"+"<br>"+
 		"<code><strong>su {Nutzername}</strong></code> – Wechselt zum definierten Benutzer"+"<br>"+
-    "<code><strong>sudo {Befehl}</strong></code> – Führt einen Befehl mit root-Privilegien aus"+"<br>",
+    	"<code><strong>sudo {Befehl}</strong></code> – Führt einen Befehl mit root-Privilegien aus"+"<br>",
 	},
 ];
 const packagingCommands = [
-{
+	{
 		title: "Alpine Linux",
 		icon: "simple-icons:alpinelinux",
 		description: 
@@ -75,12 +75,20 @@ const packagingCommands = [
 		"<code><strong>pacman -S {Paketname}</strong></code> – Installiere ein Paket"+"<br>"+
 		"<code><strong>pacman -R {Paketname}</strong></code> – Entferne ein Paket"+"<br>",
 	},
-  {
+  	{
 		title: "Debian Linux (+ Ubuntu/Mint)",
 		icon: "simple-icons:debian",
 		description: 
 		"<code><strong>apt install {Paketname}</strong></code> – Installiere ein Paket"+"<br>"+
 		"<code><strong>apt remove {Paketname}</strong></code> – Entferne ein Paket"+"<br>",
+	},
+	{
+		title: "Fedora Linux",
+		icon: "simple-icons:fedora",
+		description: 
+		"<code><strong>dnf search {Paketname}</strong></code> – Suche nach einem Paket"+"<br>"+
+		"<code><strong>dnf install {Paketname}</strong></code> – Installiere ein Paket"+"<br>"+
+		"<code><strong>dnf remove {Paketname}</strong></code> – Entferne ein Paket"+"<br>",
 	},
 ];
 const fileConverterCommands = [

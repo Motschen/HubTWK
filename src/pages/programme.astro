@@ -1,0 +1,62 @@
+---
+import DefaultLayout from '../layouts/DefaultLayout.astro'
+import Programme from '../components/Programme.astro'
+
+const mediaPrograms = [
+	{
+		title: "Davinci Resolve",
+		picture: "davinci-resolve",
+		description: "Schneide Videos wie in Hollywood",
+    url: "https://www.blackmagicdesign.com/de/products/davinciresolve/",
+	},
+  {
+		title: "Zrythm",
+		picture: "zrythm",
+		description: "Produziere Musik mit einer intuitiven Benutzeroberfläche",
+    url: "https://www.zrythm.org/de/index.html",
+	},
+  {
+		title: "GIMP 3.0",
+		picture: "gimp",
+		description: "Bildbearbeitung – mit vielen neuen Features und Verbesserungen",
+    url: "https://www.gimp.org/downloads/devel/",
+	},
+  {
+		title: "Blender",
+		picture: "blender",
+		description: "Erstelle 3D-Modelle und komplexe Szenen",
+    url: "https://www.blender.org/",
+	},
+  {
+		title: "OBS Studio",
+		picture: "obs",
+		description: "Nimm Videos auf und starte Livestreams",
+    url: "https://obsproject.com/",
+	},
+];
+const devPrograms = [
+	{
+		title: "VSCodium",
+		picture: "vscodium",
+		description: "Entwickle Programme in jeglichen Programmiersprachen (Plugins für alle Sprachen verfügbar)",
+    url: "https://vscodium.com/",
+	},
+  {
+		title: "IntelliJ IDEA",
+		picture: "intellij-idea",
+		description: "Entwickle Java-Programme mit diesem vollumfänglichen Werkzeugkasten",
+    url: "https://www.jetbrains.com/idea/",
+	},
+];
+---
+
+<DefaultLayout title="Empfohlene (kostenlose) Programme">
+  <section class="my-12 content-center">
+    <div class="container">
+      <h1>Empfohlene Programme</h1>
+      <h2>Alle kostenlos auf Linux, Windows & Mac verfügbar</h2>
+      <Programme title="Multimedia" programs={mediaPrograms} />
+      <Programme title="Entwicklung" programs={devPrograms} />
+    </div>
+  </section>
+</DefaultLayout>
