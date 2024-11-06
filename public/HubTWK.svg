@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 100 500 270">
+  <path d="M 231.815 160.178 L 231.815 153.178 L 233.714 153.178 L 233.714 160.106 Q 233.714 161.748 234.355 162.569 Q 234.995 163.389 236.275 163.389 Q 237.814 163.389 238.707 162.408 Q 239.6 161.428 239.6 159.734 L 239.6 153.178 L 241.5 153.178 L 241.5 164.742 L 239.6 164.742 L 239.6 162.966 Q 238.908 164.019 237.994 164.53 Q 237.08 165.041 235.872 165.041 Q 233.88 165.041 232.847 163.802 Q 231.815 162.563 231.815 160.178 Z M 236.595 152.899 Z M 255.714 158.97 Q 255.714 156.874 254.852 155.682 Q 253.989 154.489 252.482 154.489 Q 250.974 154.489 250.112 155.682 Q 249.25 156.874 249.25 158.97 Q 249.25 161.066 250.112 162.259 Q 250.974 163.451 252.482 163.451 Q 253.989 163.451 254.852 162.259 Q 255.714 161.066 255.714 158.97 Z M 249.25 154.933 Q 249.849 153.901 250.763 153.4 Q 251.677 152.899 252.947 152.899 Q 255.053 152.899 256.369 154.572 Q 257.686 156.244 257.686 158.97 Q 257.686 161.696 256.369 163.369 Q 255.053 165.041 252.947 165.041 Q 251.677 165.041 250.763 164.541 Q 249.849 164.04 249.25 163.007 L 249.25 164.742 L 247.34 164.742 L 247.34 148.676 L 249.25 148.676 Z" transform="matrix(7.000949, 0, 0, 6.363063, -1456.832275, -870.455078)" style="line-height: 29.0785px; fill: var(--font-color);">
+    <animateMotion path="M -138.136 162.007 C -175.256 107.692 -30.624 20.102 -14.264 31.51" calcMode="spline" begin="0s" dur="1.38s" fill="freeze" keyTimes="0; 1" keyPoints="0; 1" keySplines="0.25 0.1 0.25 1"/>
+    <animate attributeName="opacity" values="0;1" begin="0s" dur="0.86s" fill="freeze" keyTimes="0; 1"/>
+  </path>
+  <rect x="33" y="245" width="16" height="100" style="fill: var(--font-color);">
+    <animateTransform type="translate" additive="sum" attributeName="transform" values="0 0;0 -135" begin="0s" dur="1s" fill="freeze" keyTimes="0; 1" calcMode="spline" keySplines="0.25 0.1 0.25 1"/>
+  </rect>
+  <rect x="58" y="285" width="40.44" height="15" style="fill: var(--font-color);">
+    <animateTransform type="translate" additive="sum" attributeName="transform" values="0 0;0 -135" begin="0s" dur="1s" fill="freeze" keyTimes="0; 1" calcMode="spline" keySplines="0.25 0.1 0.25 1"/>
+  </rect>
+  <rect x="145" y="245" width="90" height="16" style="fill: var(--font-color);"/>
+  <rect x="182" y="258.199" width="16" height="88.021" style="fill: var(--font-color);"/>
+  <rect x="108" y="245" width="16" height="100" style="fill: var(--font-color);">
+    <animateTransform type="translate" additive="sum" attributeName="transform" values="0 0;0 -135" dur="1s" fill="freeze" keyTimes="0; 1" calcMode="spline" keySplines="0.25 0.1 0.25 1"/>
+  </rect>
+  <path d="M 280.361 342.108 L 250.059 244.808 L 268.963 244.808 L 286.199 302.215 Q 287.172 305.273 287.936 308.818 Q 288.701 312.362 289.257 315.698 Q 290.508 310.555 291.272 307.636 Q 292.037 304.717 293.01 302.076 L 309.412 260.098 L 324.841 260.098 L 340.826 302.076 Q 342.077 305.551 343.05 308.679 Q 344.023 311.806 344.718 314.864 Q 345.135 312.362 345.691 309.791 Q 346.247 307.219 347.776 301.937 L 364.873 244.808 L 383.638 244.808 L 353.197 342.108 L 340.131 342.108 L 316.362 285.257 L 293.566 342.108 Z M 399.061 342.108 L 399.061 244.808 L 417.131 244.808 L 417.131 288.454 L 460.638 244.808 L 483.295 244.808 L 441.456 285.535 L 484.824 342.108 L 462.862 342.108 L 429.224 297.489 L 417.131 309.304 L 417.131 342.108 Z" style="fill: var(--font-color);"/>
+</svg>

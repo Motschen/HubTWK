@@ -40,6 +40,23 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Lexend';
+  src: local("Lexend"), local('Lexend Regular'), local('Lexend-Regular'), url('/fonts/Lexend-Regular.woff2') format('woff2'),
+    url('/fonts/Lexend-VariableFont_wght.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Lexend';
+  src: ocal('Lexend Bold'), local('Lexend-Bold'), url('/fonts/Lexend-Bold.woff2') format('woff2'),
+    url('/fonts/Lexend-VariableFont_wght.ttf') format('ttf');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
 body {
   font-family: var(--font-family-default);
   text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;

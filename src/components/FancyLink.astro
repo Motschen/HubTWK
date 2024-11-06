@@ -4,10 +4,10 @@ import { Icon } from 'astro-icon/components'
 const { icon = 'mdi:rocket', title = 'Title', href = "", subtitle } = Astro.props
 ---
 
-<a href={href} rel="noopener noreferrer external" target="_blank" class="feature flex flex-col gap-4">
+<a href={href} rel="noopener noreferrer external" target="_blank" class="feature flex flex-col gap-4 text-center items-center">
   <audio class='hover-sound' src='/hover.ogg' />
   <div>
-    <Icon name={icon} />
+    <Icon name={icon} class="content-center m-auto" />
     <div class="content">
       <h3>{title}</h3>
       {subtitle ? <h6>{subtitle}</h6> : ''}
@@ -67,7 +67,7 @@ const { icon = 'mdi:rocket', title = 'Title', href = "", subtitle } = Astro.prop
     }
 
     &::after {
-      background-color: var(--action-color);
+      background-image: linear-gradient(to right, var(--action-color), var(--accent-color));
       transition: inset 0.2s ease-in-out;
       inset: 1rem -0.85rem -0.85rem 1rem;
       border-radius: 1rem;

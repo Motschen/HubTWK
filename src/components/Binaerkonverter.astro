@@ -5,15 +5,28 @@ const { } = Astro.props
 <binaer-konvertierung>
   <section class="my-6">
     <div class="">
-      <p class="text-lg">Dezimal zu Binär:</p>
+      <input type="radio" id="unsigned" name="signed_or_unsigned" value="Unsigned" class="cursor-pointer">
+      <label for="unsigned">Unsigned</label><br>
+      <input type="radio" id="signed" name="signed_or_unsigned" value="Signed" class="cursor-pointer">
+      <label for="signed">Signed</label><br>
       <div class="flex">
-        <input id="number-input" placeholder="123456789" type="text" class="selector cursor-text rounded-md pl-3 pr-2 py-1.5 border-2 dark:border-green-300 dark:bg-neutral-800 dark:text-white focus-visible:outline-none">
+        <input id="number-input" placeholder="123456789" type="text" class="selector cursor-text placeholder:italic rounded-md pl-3 pr-2 py-1.5 border-2 dark:border-green-300 dark:bg-neutral-800 dark:text-white focus-visible:outline-none">
         <select
-          id="type-selector"
+          id="from-selector"
           class="selector cursor-pointer rounded-md mt-3 lg:mt-0 lg:ml-2 pl-3 pr-2 py-1.5 border-2 dark:border-green-300 dark:bg-neutral-800 dark:text-white focus-visible:outline-none"
           aria-label="Wähle die Konvertierug">
-          <option value="dec_to_bin">Dezimal ⟶ Binär</option>
-          <option value="bin_to_dec">Binär ⟶ Dezimal</option>
+          <option value="dec">Dezimal</option>
+          <option value="bin">Binär</option>
+          <option value="hex">Hexadezimal</option>
+        </select>
+        <p class="pt-2 pl-2">⟶</p>
+        <select
+          id="to-selector"
+          class="selector cursor-pointer rounded-md mt-3 lg:mt-0 lg:ml-2 pl-3 pr-2 py-1.5 border-2 dark:border-green-300 dark:bg-neutral-800 dark:text-white focus-visible:outline-none"
+          aria-label="Wähle die Konvertierug">
+          <option value="dec">Dezimal</option>
+          <option value="bin">Binär</option>
+          <option value="hex">Hexadezimal</option>
         </select>
       </div>
       <p id="result-label">Lösung</p>
@@ -27,20 +40,55 @@ const { } = Astro.props
     connectedCallback() {
       // Get the 2 elements from above
       const numberInput = document.getElementById("number-input");
-      const typeSelector = document.getElementById("type-selector");
+      const fromSelector = document.getElementById("from-selector");
+      const toSelector = document.getElementById("to-selector");
       const resultLabel = document.getElementById("result-label");
       
       numberInput?.addEventListener("input", () => convert(numberInput.value));
-      typeSelector?.addEventListener("change", () => convert(numberInput.value));
+      fromSelector?.addEventListener("change", () => convert(numberInput.value));
+      toSelector?.addEventListener("change", () => convert(numberInput.value));
 
       function convert(value) {
-        if (typeSelector) {
-          switch (typeSelector.value) {
-            case "dec_to_bin":
-              decimalToBinary(value);
+        if (toSelector && fromSelector) {
+          switch (fromSelector.value) {
+            case "dec":
+              switch (toSelector.value) {
+                case "dec":
+                  if (resultLabel) resultLabel.innerText = value;
+                  break;
+                case "bin":
+                  if (resultLabel) resultLabel.innerText = decimalToBinary(value);
+                  break;
+                case "hex":
+                  if (resultLabel) resultLabel.innerText = decimalToHex(value);
+                  break;
+              }
               break;
-            case "bin_to_dec":
-              binaryToDecimal(value);
+            case "bin":
+              switch (toSelector.value) {
+                case "dec":
+                  if (resultLabel) resultLabel.innerText = binaryToDecimal(value);
+                  break;
+                case "bin":
+                  if (resultLabel) resultLabel.innerText = value;
+                  break;
+                case "hex":
+                  if (resultLabel) resultLabel.innerText = decimalToHex(binaryToDecimal(value));
+                  break;
+              }
+              break;
+            case "hex":
+              switch (toSelector.value) {
+                case "dec":
+                  if (resultLabel) resultLabel.innerText = hexToDecimal(value);
+                  break;
+                case "bin":
+                  if (resultLabel) resultLabel.innerText = decimalToBinary(hexToDecimal(value));
+                  break;
+                case "hex":
+                  if (resultLabel) resultLabel.innerText = value;
+                  break;
+              }
               break;
           }
         }
@@ -56,7 +104,7 @@ const { } = Astro.props
           currentValue = Math.floor(currentValue / 2);
         }
 
-        if (resultLabel) resultLabel.innerText = binaryString;
+        return binaryString;
       }
       function binaryToDecimal(value) {
         var splitValues = value.split("");
@@ -71,8 +119,49 @@ const { } = Astro.props
         }
 
         if (resultLabel) {
-          if (currentValue) resultLabel.innerText = currentValue;
-          else resultLabel.innerText = " Da ist der Wurm drin: Binärzahlen bestehen nur aus 0 und 1.";
+          if (currentValue) return currentValue.toString();
+          else return " Da ist der Wurm drin: Binärzahlen bestehen nur aus 0 und 1.";
+        } 
+      }
+      function decimalToHex(value) {
+        const parsedValue = parseInt(value);
+        var currentValue = parsedValue;
+        var hexString = "";
+        
+        while (currentValue > 0) {
+          hexString = (currentValue % 16).toString()
+          .replace("10", "A")
+          .replace("11", "B")
+          .replace("12", "C")
+          .replace("13", "D")
+          .replace("14", "E")
+          .replace("15", "F") + hexString;
+          currentValue = Math.floor(currentValue / 16);
+        }
+
+        return hexString;
+      }
+      function hexToDecimal(value) {
+        var splitValues = value.split("");
+        var currentValue = 0;
+
+        for (var i = 0; i < splitValues.length; i++) {
+          const parsedDigit = parseInt(splitValues[i]
+            .replace("F", "15")
+            .replace("E", "14")
+            .replace("D", "13")
+            .replace("C", "12")
+            .replace("B", "11")
+            .replace("A", "10"));
+          if (parsedDigit > 16) {
+            currentValue = null; break;
+          }
+          currentValue += parsedDigit * Math.pow(16, splitValues.length - i - 1);
+        }
+
+        if (resultLabel) {
+          if (currentValue) return currentValue;
+          else return " Da ist der Wurm drin: Hexadezimalzahlen bestehen nur aus Ziffern sowie Buchstaben von A bis F.";
         } 
       }
     }

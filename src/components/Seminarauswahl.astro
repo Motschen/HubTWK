@@ -1,7 +1,5 @@
 ---
-interface Props {
-  includeHashtag?: boolean
-}
+interface Props {}
 const { } = Astro.props
 import { Icon } from 'astro-icon/components'
 ---
@@ -24,14 +22,14 @@ import { Icon } from 'astro-icon/components'
           class="button has-icon color-secondary ml-0 mt-3 content-center lg:mt-0 lg:ml-3 rounded-md text-white hover:cursor-pointer appearance-none h-16">
           <Icon id="copy-icon" name="ion:open-outline" />
           <Icon id="success-icon" name="ion:checkmark-outline" class="hidden" />
-          <p id="color-label">Plan öffnen</p>
+          <p id="open-label">Plan öffnen</p>
       </div>
     </div>
   </section>
 </seminar-auswahl>
 
 <script>
-  import { getISOWeek, setISOWeek, startOfISOWeek, endOfISOWeek } from "date-fns";
+  import { getISOWeek, setISOWeek, startOfISOWeek, endOfISOWeek, isWeekend } from "date-fns";
 
   // Define the behaviour for our new type of HTML element.
   class Seminarauswahl extends HTMLElement {
@@ -46,20 +44,23 @@ import { Icon } from 'astro-icon/components'
         gruppeInput.value = initialGroup;
       }
       if (weekSelector) {
+        const currentDate = new Date();
         let currentWeek = getISOWeek(new Date());
         if (new Date().getMonth() <= 3) currentWeek += 52; // Planungswochen werden auch nach dem Jahreswechsel fortlaufend nummeriert
 
         // Adds every following week to the selector
-        for (var i = currentWeek; i <= 61; i++) {
+        for (var i = Math.max(currentWeek-1, 1); i <= 61; i++) {
           let weekName = 'Woche '+i;
-          if (i === currentWeek) weekName += ' (aktuelle Woche)';
+          if (!isWeekend(currentDate) && i === currentWeek) weekName += ' (aktuelle Woche)';
+          else if (isWeekend(currentDate) && i === currentWeek+1) weekName += ' (kommende Woche)';
           else {
             let otherWeek = setISOWeek(new Date(), i);
             weekName += ' ('+startOfISOWeek(otherWeek).toLocaleDateString('de-DE') + ' - ' + endOfISOWeek(otherWeek).toLocaleDateString('de-DE')+')';
           }
           weekSelector.options[weekSelector.options.length] = new Option(weekName, i.toString());
         }
-        weekSelector.value = currentWeek;
+        if (isWeekend(currentDate)) weekSelector.value = Math.min(currentWeek+1, 61);
+        else weekSelector.value = currentWeek;
       }
       
 

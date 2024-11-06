@@ -2,9 +2,12 @@
 import Navigation from '../components/Navigation.astro'
 import { SkipLinks } from 'accessible-astro-components'
 import { Icon } from 'astro-icon/components'
+const {
+  sticky = true,
+} = Astro.props
 ---
 
-<header class="sticky top-0 z-50 backdrop-blur-md">
+<header id="header" class={(sticky ? 'sticky backdrop-blur-md ' : '') + "top-0 z-50"}>
   <SkipLinks />
   <Navigation>
     <li class="menu-item">
@@ -44,11 +47,12 @@ import { Icon } from 'astro-icon/components'
         </li>
       </ul>
     </li>
-    <li class="menu-item type-icon">
+    <!--   <li class="menu-item type-icon">
       <a href="https://github.com/Motschen" title="View my GitHub profile">
         <Icon name="simple-icons:github" />
       </a>
     </li>
+    -->
   </Navigation>
 </header>
 
@@ -56,7 +60,11 @@ import { Icon } from 'astro-icon/components'
   @use '../assets/scss/base/outline' as *;
 
   header {
-    background-color: rgb(249, 250, 255, 0.75);
+    .menu-item {
+      a, a:visited, button, button::after {
+        color: var(--accent-color);
+      }
+    }
 
     .type-icon a {
       display: block;
@@ -76,9 +84,9 @@ import { Icon } from 'astro-icon/components'
           fill: var(--action-color-state);
         }
       }
+      &:is(.darkmode *) {
+        background-color: rgba(18, 18, 18, 0.75);
+      }
     }
-  }
-  header:is(.darkmode *) {
-    background-color: rgba(18, 18, 18, 0.75);
   }
 </style>

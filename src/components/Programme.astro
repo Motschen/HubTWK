@@ -10,14 +10,14 @@ const {  title, programs } = Astro.props
       <audio class='hover-sound' src='/hover.ogg' />
       <div class="relative isolate flex flex-col overflow-hidden rounded-xl bg-stone-950">
         <img 
-          src={`img/program/`+program.picture+`.webp`}
+          src={`/img/program/`+program.picture+`.webp`}
           class="absolute -z-10 h-500 w-full object-cover"
         />
         <div class="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900 via-gray-900/40" />
 
-        <div class="content mt-20">
+        <div class="content mt-20 mx-3 my-3">
           <h3>{program.title}</h3>
-          <span class="text-base leading-7 text-gray-600 dark:text-gray-100">
+          <span class="text-base leading-7 text-gray-100 dark:text-gray-100">
             <span set:html={program.description}></span>
           </span>
         </div>
@@ -44,7 +44,7 @@ const {  title, programs } = Astro.props
   .feature {
     transition: inset 0.2s ease-in-out;
     inset: 0;
-    color: black !important;
+    color: white !important;
     text-decoration: unset !important;
 
     position: relative;
@@ -76,7 +76,7 @@ const {  title, programs } = Astro.props
     }
 
     &::after {
-      background-color: var(--action-color);
+      background-image: linear-gradient(to right, var(--action-color), var(--accent-color));
       transition: inset 0.2s ease-in-out;
       inset: 1rem -0.85rem -0.85rem 1rem;
       border-radius: 1rem;

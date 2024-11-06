@@ -13,6 +13,7 @@ const {
   showFooter = true,
   image = '/social-preview-image.png',
   author = 'Martin Prokoph',
+  stickyHeader = true,
 } = Astro.props
 ---
 
@@ -38,7 +39,7 @@ const {
 		<script src="/src/pwa.ts"></script>
   </head>
   <body>
-    <Header />
+    <Header sticky={stickyHeader} />
     <main id="main-content" transition:animate="fade">
       <slot />
     </main>
@@ -50,12 +51,13 @@ const {
         --radius-large: 6px;
         --gap-default: 2rem;
         --font-measure: 70ch;
-        --font-family-default: 'Open Sans', sans-serif;
-        --font-family-special: 'Open Sans', sans-serif;
+        --font-family-default: 'Lexend', sans-serif;
+        --font-family-special: 'Lexend', sans-serif;
         // light theme
         --font-color: var(--neutral-900);
         --action-color: var(--primary-300);
         --action-color-state: var(--primary-500);
+        --accent-color: var(--accent-100);
         --background: var(--neutral-100);
         --primary-background: var(--primary-100);
         --neutral-background: var(--neutral-200);
@@ -66,6 +68,7 @@ const {
         --font-color: var(--neutral-100);
         --action-color: var(--secondary-100);
         --action-color-state: var(--secondary-500);
+        --accent-color: var(--accent-dark-100);
         --background: var(--dark-100);
         --primary-background: var(--primary-500);
         --neutral-background: var(--neutral-900);

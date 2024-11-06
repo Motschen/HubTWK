@@ -11,18 +11,18 @@ import { Icon } from 'astro-icon/components'
 <div id="main-navigation" class="is-desktop py-8">
   <div class="container">
     <a href="/" class="flex items-center gap-2 !no-underline">
-      <Icon name="ion:color-wand-outline" width="24" height="24" />
+      <Icon name="hub" width="24" height="24" />
       <span class="font-bold midnightdust-text">HubTWK</span>
     </a>
-    <div class="wrapper content-center">
+    <div class="wrapper content-center m-auto">
       <nav class="desktop-menu" aria-label="Main navigation desktop">
         <ul class="menu">
           <slot />
         </ul>
       </nav>
-      <DarkMode />
-      <ResponsiveToggle />
     </div>
+    <DarkMode />
+    <ResponsiveToggle />
     <nav class="mobile-menu" aria-label="Main navigation mobile">
       <ul class="menu">
         <slot />
@@ -336,7 +336,7 @@ import { Icon } from 'astro-icon/components'
         padding: 0;
         margin-top: -1px;
         border: none;
-        color: var(--action-color);
+        color: var(--accent-color);
 
         &:hover {
           color: var(--action-color-state);
@@ -353,7 +353,7 @@ import { Icon } from 'astro-icon/components'
           margin-top: -0.25rem;
           border-style: solid;
           border-width: 0.2em 0.2em 0 0;
-          border-color: var(--action-color);
+          border-color: var(--accent-color);
           transform: rotate(135deg);
         }
 
