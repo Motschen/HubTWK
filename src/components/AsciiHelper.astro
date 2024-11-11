@@ -1,0 +1,46 @@
+---
+interface Props {}
+const { } = Astro.props
+---
+<ascii-helper>
+  <section class="my-6">
+    <div class="">
+      <div class="">
+        <div>
+          <p class="text-lg">Dezimal</p>
+          <input id="number-input" placeholder="42" type="text" class="selector cursor-text placeholder:italic rounded-md pl-3 pr-2 py-1.5 border-2 border-[var(--accent-color)] dark:bg-neutral-800 dark:text-white focus-visible:outline-none">
+        </div>
+        <div>
+          <p class="text-lg">ASCII</p>
+          <input id="ascii-input" placeholder="*" type="text" class="selector cursor-text placeholder:italic rounded-md pl-3 pr-2 py-1.5 border-2 border-[var(--accent-color)] dark:bg-neutral-800 dark:text-white focus-visible:outline-none">
+        </div>
+    </div>
+  </section>
+</ascii-helper>
+
+<script>
+  // Define the behaviour for our new type of HTML element.
+  class AsciiHelper extends HTMLElement {
+    connectedCallback() {
+      // Get the 2 elements from above
+      const numberInput = document.getElementById("number-input");
+      const asciiInput = document.getElementById("ascii-input");
+      
+      numberInput?.addEventListener("input", () => asciiInput.value = convert(numberInput.value, true));
+      asciiInput?.addEventListener("input", () => numberInput.value = convert(asciiInput.value, false));
+
+      function convert(value, toAscii: boolean): string {
+        if (value == "") return "";
+
+        if (toAscii) {
+          return String.fromCharCode(parseInt(value));
+        } else {
+          return value.charCodeAt(0);
+        }
+      }
+    }
+  }
+  
+  // Tell the browser to use our custom class for elements.
+  customElements.define('ascii-helper', AsciiHelper);
+</script>
