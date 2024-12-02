@@ -54,6 +54,12 @@ const {
         <li class="submenu-item">
           <a rel="noopener noreferrer external" target="_blank" href="https://web.stanford.edu/class/cs103/tools/truth-table-tool/">Stanford Wahrheitswerttabellen</a>
         </li>
+        <li class="submenu-item">
+          <a rel="noopener noreferrer external" target="_blank" href="https://www.wolframalpha.com/">Wolfram Alpha</a>
+        </li>
+        <li class="submenu-item">
+          <a id="lerngruppenraeume" rel="noopener noreferrer external" target="_blank" href="">Aktuell freie Gruppenräume</a> 
+        </li>
       </ul>
     </li>
     <!--   <li class="menu-item type-icon">
@@ -64,6 +70,18 @@ const {
     -->
   </Navigation>
 </header>
+
+<script>
+  import { getISOWeek } from 'date-fns';
+
+  const lerngruppenraeume = document.getElementById('lerngruppenraeume');
+  let currentWeek = getISOWeek(new Date());
+  if (new Date().getMonth() <= 3) currentWeek += 52; // Planungswochen werden auch nach dem Jahreswechsel fortlaufend nummeriert
+
+  if (lerngruppenraeume && lerngruppenraeume instanceof HTMLAnchorElement) {
+    lerngruppenraeume.href = `https://stundenplan.htwk-leipzig.de/ws/Berichte/Text-Listen;Module;id;%23SPLUSCC3F4C?template=sws_modul_js&weeks=_${currentWeek}`;
+  }
+</script>
 
 <style lang="scss" is:global>
   @use '../assets/scss/base/outline' as *;
