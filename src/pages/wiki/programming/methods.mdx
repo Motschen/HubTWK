@@ -40,8 +40,10 @@ In der Hauptmethode wird der Code definiert, welcher bei jedem Programmstart aus
     </div>
     <div id="java-main" class="hidden">
       ```java
-      public void main(String[] args) {
-        // Dein Code
+      public class Main {
+        public static void main(String[] args) {
+          // Dein Code
+        }
       }
       ```
     </div>
@@ -99,17 +101,19 @@ Hier geben wir einfach nur das Ergebnis in die Konsole aus.
     </div>
     <div id="java-return" class="hidden">
       ```java
-      char wasIstGroesser(int a, int b) {
-        if (a > b) return 'a';
-        else if (b > a) return 'b';
+      public class Main {
+        static char wasIstGroesser(int a, int b) {
+          if (a > b) return 'a';
+          else if (b > a) return 'b';
 
-        // Dadurch, dass die Ausführung der Funktion nach der 'return'-Anweisung beendet wird,
-        // können wir uns hier (übrigens auch in der zweiten Zeile der Methode) das 'else' sparen.
-        return '=';
-      }
+          // Dadurch, dass die Ausführung der Funktion nach der 'return'-Anweisung beendet wird,
+          // können wir uns hier (übrigens auch in der zweiten Zeile der Methode) das 'else' sparen.
+          return '=';
+        }
 
-      public void main(String[] args) {
-        System.out.print(wasIstGroesser(69, 420));
+        public static void main(String[] args) {
+          System.out.print(wasIstGroesser(69, 420));
+        }
       }
       ```
     </div>
@@ -136,7 +140,7 @@ Hier geben wir einfach nur das Ergebnis in die Konsole aus.
 </CustomTabs>
 
 ## Methoden ohne Rückgabewert
-Wird kein Rückgabewert benötigt, können Methoden dennoch hilfreich sein, um ein Programm zu struktorieren.
+Wird kein Rückgabewert benötigt, können Methoden dennoch hilfreich sein, um ein Programm zu struktorieren.  
 Das folgende Beispiel gibt eine Zeichenkette mit vorangestelltem Pfeil in das Terminal aus.
 <CustomTabs tabs={[{
     name: `C++`,
@@ -175,17 +179,19 @@ Das folgende Beispiel gibt eine Zeichenkette mit vorangestelltem Pfeil in das Te
     </div>
     <div id="java-void" class="hidden">
       ```java
-      public void main(String[] args) {
-        druckeMitPfeil("Hallo aus Java!")
-      }
+      public class Main {
+        public static void main(String[] args) {
+          druckeMitPfeil("Hallo aus Java!")
+        }
 
-      void druckeMitPfeil(String output) {
-        System.out.println("⟶ " + output);
+        static void druckeMitPfeil(String output) {
+          System.out.println("⟶ " + output);
+        }
       }
       ```
     </div>
     <div id="python-void" class="hidden">
-      Python bietet viele Komfort-Features.  
+      Python bietet zahlreiche Komfort-Features.  
       So lassen sich Zeichenketten mit vorangestelltem f vor den \"-Zeichen einfach formatieren.  
       <br/>
       ```python
