@@ -1,0 +1,75 @@
+---
+layout: ../../../layouts/MarkdownLayout.astro
+title: Programmier-1-mal-1 – Methoden
+---
+
+import { Icon } from 'astro-icon/components'
+import { Notification } from 'accessible-astro-components'
+import CustomTabs from "../../../components/CustomTabs.astro"
+import { Image } from "astro:assets";
+import intellij_idea from "../../../assets/img/intellij-idea.png";
+import vscodium from "../../../assets/img/vscodium.png";
+
+# Programmier-1-mal-1: Einstieg
+
+Egal, ob du bereits eine Programmiersprache beherrschst, oder nicht, – hier bist du richtig.  
+Das Programmier-1-mal-1 ist (wie ein Programm :D) in verschiedene Abschnitte gegliedert.  
+Auf dieser Seite findest du erst einmal die Basics, bevor es in den weiteren Lektionen zur Sache geht.  
+
+## Wie schreibe ich eigentlich Code?
+Mit der richigen Software wird das Programmieren zum Kinderspiel.  
+Der Code-Editor ist hierbei besonders wichtig.  
+
+Für Java empfehle ich aus Erfahrung IntelliJ IDEA – hier sind viele nützliche Werkzeuge von Haus aus mit an Bord.  
+
+Für andere Programmiersprachen kann man mit Visual Studio Code nichts falsch machen.  
+Hier empfiehlt sich aber, die passende Erweiterung für die gewünschte Programmiersprache aus dem Addon-Store zu installieren.
+
+<CustomTabs tabs={[{
+    name: `Visual Studio Code`,
+    icon: 'simple-icons:vscodium',
+    id: 'vscode',
+    active: true
+}, {
+    name: `IntelliJ IDEA`,
+    icon: 'simple-icons:intellijidea',
+    id: 'intellij'
+}]}>
+    <div id="vscode" data-active="true">
+    <center>
+      <Image
+				class="inline-block self-center"
+				src={vscodium}
+				alt="Ein Bilschirmfoto, auf dem Visual Studio Code zu sehen ist."
+        width={900}
+				loading="eager"
+			/>
+    Das offizielle VS Code von Microsoft:  
+    https://code.visualstudio.com/  
+    <br/>
+    Die quelloffene Version VSCodium:  
+    https://vscodium.com/  
+    </center>
+    </div>
+
+    <div id="intellij" class="hidden">
+      
+      <center><Image
+				class="inline-block self-center"
+				src={intellij_idea}
+				alt="Ein Bilschirmfoto, auf dem IntelliJ IDEA zu sehen ist."
+        width={900}
+				loading="eager"
+			/>
+      
+      Kostenlose IntelliJ IDEA Community Edition von JetBrains:  
+      https://www.jetbrains.com/idea/download/#community-edition
+      <br/>
+      Mehr Informationen:  
+      https://www.jetbrains.com/idea/
+      </center>
+    </div>
+</CustomTabs>
+
+## Was bedeuten die ganzen Wörter :(
+Sektion in Arbeit

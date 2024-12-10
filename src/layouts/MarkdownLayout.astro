@@ -19,7 +19,7 @@ const { frontmatter } = Astro.props
 
   function initCopyCodeButtons() {
     console.log("Initializing Copy Code Buttons...");
-    let copyButtonLabel = "Copy Code";
+    let copyButtonLabel = "Kopieren";
     let codeBlocks = Array.from(document.querySelectorAll("pre"));
 
     for (let codeBlock of codeBlocks) {
@@ -48,7 +48,7 @@ const { frontmatter } = Astro.props
       await navigator.clipboard.writeText(text);
 
       // visual feedback that task is completed
-      button.innerText = "Code Copied!";
+      button.innerText = "Code kopiert!";
 
       setTimeout(() => {
         button.innerText = copyButtonLabel;

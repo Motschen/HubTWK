@@ -1,0 +1,199 @@
+---
+layout: ../../../layouts/MarkdownLayout.astro
+title: Programmier-1-mal-1 – Methoden
+---
+
+import { Icon } from 'astro-icon/components'
+import { Notification } from 'accessible-astro-components'
+import CustomTabs from "../../../components/CustomTabs.astro"
+
+# Programmier-1-mal-1: Methoden
+
+Methoden erlauben dir, Code in Sinnabschnitte einzuteilen, und diesen wiederzuverwenden. 
+
+## Hauptmethode
+In der Hauptmethode wird der Code definiert, welcher bei jedem Programmstart ausgeführt wird.
+<CustomTabs tabs={[{
+    name: `C++`,
+    icon: 'simple-icons:cplusplus',
+    id: 'cplusplus-main',
+    active: true
+}, {
+    name: `Java`,
+    icon: 'java',
+    id: 'java-main'
+}, {
+    name: `Python`,
+    icon: 'simple-icons:python',
+    id: 'python-main'
+}]}>
+    <div id="cplusplus-main" data-active="true">
+      
+      ```c
+      int main() {
+        // Dein Code
+
+        return 0;
+        // 0 als Rückgabewert bedeutet, dass das Programm erfolgreich beendet wurde.
+      }
+      ```
+    </div>
+    <div id="java-main" class="hidden">
+      ```java
+      public void main(String[] args) {
+        // Dein Code
+      }
+      ```
+    </div>
+    <div id="python-main" class="hidden">
+      In Python gibt es keine explizite Hauptmethode.  
+      Den Einstiegspunkt definiert man hier über folgendes Konstrukt:
+      <br/>
+      ```python
+      if __name__ == '__main__':
+        # Dein Code
+      ```
+    </div>
+</CustomTabs>
+
+## Methoden mit Rückgabewert
+Durch einen Rückgabewert lassen sich Berechnungen in einem seperaten Abschnitt des Quelltextes durchführen.  
+Das macht den Code nicht nur übersichtlicher, sondern erspart auch dir und dem Computer sehr viel Arbeit, da einmal definierte Methoden beliebig oft aufgerufen werden können.  
+
+In folgendem Beispiel nutzen wir die Funktion wasIstGroesser, um zu ermitteln, welcher Eingabewert größer ist.  
+Als Rückgabe wird der Bezeichner 'a' oder 'b' (oder '=', falls a und b gleich groß sind) zurückgegeben und kann weiterverarbeitet werden.  
+Hier geben wir einfach nur das Ergebnis in die Konsole aus.
+<CustomTabs tabs={[{
+    name: `C++`,
+    icon: 'simple-icons:cplusplus',
+    id: 'cplusplus-return',
+    active: true
+}, {
+    name: `Java`,
+    icon: 'java',
+    id: 'java-return'
+}, {
+    name: `Python`,
+    icon: 'simple-icons:python',
+    id: 'python-return'
+}]}>
+    <div id="cplusplus-return" data-active="true">
+      ```c
+      #include <iostream>
+      using std::cout;
+
+      char wasIstGroesser(int a, int b) {
+        if (a > b) return 'a';
+        else if (b > a) return 'b';
+
+        // Dadurch, dass die Ausführung der Funktion nach der 'return'-Anweisung beendet wird,
+        // können wir uns hier (übrigens auch in der zweiten Zeile der Methode) das 'else' sparen.
+        return '=';
+      }
+
+      int main() {
+        cout << wasIstGroesser(69, 420);
+        return 0;
+      }
+      ```
+    </div>
+    <div id="java-return" class="hidden">
+      ```java
+      char wasIstGroesser(int a, int b) {
+        if (a > b) return 'a';
+        else if (b > a) return 'b';
+
+        // Dadurch, dass die Ausführung der Funktion nach der 'return'-Anweisung beendet wird,
+        // können wir uns hier (übrigens auch in der zweiten Zeile der Methode) das 'else' sparen.
+        return '=';
+      }
+
+      public void main(String[] args) {
+        System.out.print(wasIstGroesser(69, 420));
+      }
+      ```
+    </div>
+    <div id="python-return" class="hidden">
+      Im Gegensatz zu anderen Programmiersprachen werden in Python keine geschweiften Klammern verwendet, um einen Körper zu kennzeichnen.  
+      Stattdessen funktioniert hier alles per Einrückung mit Tab.  
+      Auch Datentypen werden in Python nicht explizit deklariert.  
+      <br/>
+      ```python
+      def wasIstGroesser(a, b):
+        if a > b:
+          return 'a'
+        elif b > a:
+          return 'b'
+
+        # Dadurch, dass die Ausführung der Funktion nach der 'return'-Anweisung beendet wird,
+        # können wir uns hier (übrigens auch in der zweiten Zeile der Methode) das 'else' sparen.
+        return '='
+      
+      if __name__ == '__main__':
+        print(wasIstGroesser(69, 420))
+      ```
+    </div>
+</CustomTabs>
+
+## Methoden ohne Rückgabewert
+Wird kein Rückgabewert benötigt, können Methoden dennoch hilfreich sein, um ein Programm zu struktorieren.
+Das folgende Beispiel gibt eine Zeichenkette mit vorangestelltem Pfeil in das Terminal aus.
+<CustomTabs tabs={[{
+    name: `C++`,
+    icon: 'simple-icons:cplusplus',
+    id: 'cplusplus-void',
+    active: true
+}, {
+    name: `Java`,
+    icon: 'java',
+    id: 'java-void'
+}, {
+    name: `Python`,
+    icon: 'simple-icons:python',
+    id: 'python-void'
+}]}>
+    <div id="cplusplus-void" data-active="true">
+      ```c
+      #include <iostream>
+      #include <string>
+      using std::cout;
+      using std::endl;
+
+      // In C-basierten Programmiersprachen (wie C++) muss eine Methode strikt vor dem Aufruf deklariert werden
+      void druckeMitPfeil(std::string output);
+
+      int main() {
+        druckeMitPfeil("Hallo aus C++!");
+        return 0;
+      }
+
+      // Die Definition der oben deklarierten Methode
+      void druckeMitPfeil(std::string output) {
+        cout << "⟶ " << output << std::endl;
+      }
+      ```
+    </div>
+    <div id="java-void" class="hidden">
+      ```java
+      public void main(String[] args) {
+        druckeMitPfeil("Hallo aus Java!")
+      }
+
+      void druckeMitPfeil(String output) {
+        System.out.println("⟶ " + output);
+      }
+      ```
+    </div>
+    <div id="python-void" class="hidden">
+      Python bietet viele Komfort-Features.  
+      So lassen sich Zeichenketten mit vorangestelltem f vor den \"-Zeichen einfach formatieren.  
+      <br/>
+      ```python
+      def druckeMitPfeil(output):
+        print(f"-> {output}")
+      
+      if __name__ == '__main__':
+        druckeMitPfeil("Hallo aus Python!")
+      ```
+    </div>
+</CustomTabs>
