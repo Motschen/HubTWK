@@ -1,0 +1,41 @@
+/* Diese Regeln werden auf die gesamte Seite angewendet*/
+body { 
+    /* Definiert die Hintergrundfarbe */
+    background-color: #181825;
+    /* Definiert die Vordergrundfarbe (z.B. Text) */
+    color: #cdd6f4; 
+    /* Positioniert allen Text in der Mitte */
+    text-align: center;
+}
+
+/* Der Selektor 'p.our-text' wählt alle p (Paragraph)-Elemente mit der Klasse 'our-text' */
+p.our-text {
+    /* Schriftgröße */
+    font-size: 30px;
+    /* Unterstreicht den Text */
+    text-decoration-line: underline;
+}
+/* Der Selektor '#our-button' wählt genau das Element mit der id 'our-button' */
+#our-button {
+    background-color: #a6e3a1;
+    color: #000; 
+
+    /* Rundet die Ecken des Knopfes ab */
+    border-radius: 8px;
+    /* Vergrößert den leeren Raum zwischen Knopf und Beschriftung */
+    padding: 8px 12px;
+    /* Eigenschaften, die mit !important gekennzeichnet sind,
+    nehmen stehts Priorität und überschreiben alle anderswo definierten Werte */
+    border-color: #2f4d2d !important;
+
+    /* transition erlaubt es, Effekte langsam einzublenden */
+    transition: box-shadow 0.5s ease;
+    
+    /* Beschreibt die Eigenschaften des Elementes beim überfahren mit der Maus */
+    &:hover {
+        /* Durch das !important bei der Rahmenfarbe oben können wir sie hier nicht mehr verändern */
+        border-color: #a6e3a1;
+        /* Fügt einen grünen Schatten ein – fancy!*/
+        box-shadow: 0px 0px 9px #a6e3a1;
+    }
+}
