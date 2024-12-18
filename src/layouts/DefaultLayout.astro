@@ -35,8 +35,6 @@ const {
       image={image}
       author={author}
     />
-    {pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} />}
-		<script src="/src/pwa.ts"></script>
   </head>
   <body>
     <Header sticky={stickyHeader} />

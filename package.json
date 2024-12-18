@@ -20,7 +20,6 @@
     "@iconify-json/simple-icons": "^1.2.3",
     "@typescript-eslint/eslint-plugin": "^8.6.0",
     "@typescript-eslint/parser": "^8.6.0",
-    "@vite-pwa/astro": "^0.4.3",
     "accessible-astro-components": "^2.3.6",
     "astro": "^5.0.9",
     "astro-compress": "^2.3.1",
