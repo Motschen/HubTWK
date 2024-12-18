@@ -3,7 +3,7 @@ import { Icon } from 'astro-icon/components'
 
 const { icon = 'mdi:rocket', title = 'Title', href = "", subtitle } = Astro.props
 ---
-
+<div class="relative bounding-box flex">
 <a href={href} rel="noopener noreferrer external" target="_blank" class="feature flex flex-col gap-4 text-center items-center">
   <audio class='hover-sound' src='/hover.ogg' />
   <div>
@@ -17,6 +17,7 @@ const { icon = 'mdi:rocket', title = 'Title', href = "", subtitle } = Astro.prop
     </div>
   </div>
 </a>
+</div>
 
 <script>
   const feature = document.getElementsByClassName("feature");
@@ -24,7 +25,7 @@ const { icon = 'mdi:rocket', title = 'Title', href = "", subtitle } = Astro.prop
   for (var i = 0; i < feature.length; i++) {
     const audio = feature[i].querySelector(':scope > .hover-sound');
     feature[i].addEventListener("mouseenter", function() {
-      audio.play();
+      if (audio instanceof HTMLAudioElement) audio.play();
     });
   }
 </script>
@@ -73,12 +74,13 @@ const { icon = 'mdi:rocket', title = 'Title', href = "", subtitle } = Astro.prop
       border-radius: 1rem;
       z-index: 0;
     }
-    &:hover::after, &:focus::after {
+    
+  }
+  .bounding-box:hover .feature, .feature:focus {
+    inset: 1rem -0.85rem -0.85rem 1rem;
+    &::after {
       inset: 0;
     }
-  }
-  .feature:hover, .feature:focus {
-    inset: 1rem -0.85rem -0.85rem 1rem;
   }
   .feature:is(.darkmode *) {
     color: white !important;

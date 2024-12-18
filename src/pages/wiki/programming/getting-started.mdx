@@ -72,4 +72,124 @@ Hier empfiehlt sich aber, die passende Erweiterung für die gewünschte Programm
 </CustomTabs>
 
 ## Was bedeuten die ganzen Wörter :(
-Sektion in Arbeit
+
+
+## Die Datentypen
+In jeder (modernen) Programmiersprache gibt es das Konzept von Datentypen.  
+Dabei werden diese entweder explizit deklariert (C++, Java, etc.) oder implizit bestimmt (Python, JavaScript, etc.).  
+Hier eine Liste mit den üblichen Datentypen, sowie ihrer Bezeichnung in der jeweiligen Programmiersprache:
+<CustomTabs tabs={[{
+    name: `C++`,
+    icon: 'simple-icons:cplusplus',
+    id: 'cplusplus-datatypes',
+    active: true
+}, {
+    name: `Java`,
+    icon: 'java',
+    id: 'java-datatypes'
+}, {
+    name: `Python`,
+    icon: 'simple-icons:python',
+    id: 'python-datatypes'
+}]}>
+    <div id="cplusplus-datatypes" data-active="true">
+      
+      ```c
+      #include <string> // Benötigt für Zeichenketten
+
+      // Wahrheitswert
+      bool wahrheitswert = true;
+
+      // Zahlen
+      int ganzeZahl = 420;
+      long grosseGanzeZahl = 34465569643845l;
+      float fliessKommazahl = 0.75f;
+      double praezisereKommazahl = 6.9;
+
+      // Zeichen und -ketten
+      char zeichen = '!';
+      std::string zeichenkette = "Hallo Welt" + zeichen;
+
+      // Aufzählungstyp (vordefinierte Wertemenge)
+      enum Test {
+        HALLO, WELT;
+      }
+      Test enumeration = Test::WELT;
+
+      // Felder und Vektoren
+      std::array<int, 9> feld = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+      std::vector<int> vektor = [69];
+      vektor.push_back(420); // Wert von vektor ist jetzt [69, 420]
+
+      // Implizite Variablen (seit C++11)
+      auto variable = "hiiii :) Ich werde automatisch als Zeichenkette erkannt!"
+      ```
+    </div>
+    <div id="java-datatypes" class="hidden">
+      ```java
+      import java.util.*;  
+      public class Main {
+        // Wahrheitswert
+        boolean wahrheitswert = true;
+
+        // Zahlen
+        int ganzeZahl = 420;
+        long grosseGanzeZahl = 34465569643845l;
+        float fliessKommazahl = 0.75f;
+        double praezisereKommazahl = 6.9;
+
+        // Zeichen und -ketten
+        char zeichen = '!';
+        std::string zeichenkette = "Hallo Welt" + zeichen;
+
+        // Aufzählungstyp (vordefinierte Wertemenge)
+        enum Test {
+          HALLO, WELT;
+        }
+        Test enumeration = Test.WELT;
+
+        // Felder und Vektoren
+        int[9] feld = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+        Vector<Integer> vektor = new Vector<Integer>();
+        vektor.add(420); // Wert von vektor ist jetzt [69, 420]
+
+        // Implizite Variablen (seit Java 16)
+        var variable = "hiiii :) Ich werde automatisch als Zeichenkette erkannt!"
+      }
+      ```
+    </div>
+    <div id="python-datatypes" class="hidden">
+      In Python werden Datentypen generel implizit bestimmt.  
+      Sie lassen sich aber auch explizit bestimmen
+      <br/>
+      ```python
+      from enum import Enum
+
+      var variable = "hiiii :) Ich werde automatisch als Zeichenkette erkannt!"
+
+      # Wahrheitswert
+      var: bool wahrheitswert = true;
+
+      # Zahlen
+      var: int ganzeZahl = 420;
+      var grosseGanzeZahl = 34465569643845l;
+      var fliessKommazahl = 0.75f;
+      var praezisereKommazahl = 6.9;
+
+      # Zeichen und -ketten
+      var zeichen = '!';
+      var zeichenkette = "Hallo Welt" + zeichen;
+
+      # Aufzählungstyp (vordefinierte Wertemenge)
+      class Test(Enum):
+        HALLO = 1
+        WELT = 2
+      var enumeration = Test.WELT;
+
+      # Felder und Vektoren 
+      var feld = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+      var vektor = [69]; # Felder sind in Python bereits Vektoren
+      vektor.append(420); // Wert von vektor ist jetzt [69, 420]
+      ```
+    </div>
+</CustomTabs>
