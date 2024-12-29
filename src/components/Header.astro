@@ -10,20 +10,20 @@ const {
 <header id="header" class={(sticky ? 'sticky backdrop-blur-md ' : '') + "top-0 z-50"}>
   <SkipLinks />
   <Navigation>
-    <li class="menu-item">
-      <a href="/">Home</a>
+    <li class="menu-item type-icon">
+      <a href="/"><Icon name="line-md:home"/>Home</a>
     </li>
-    <li class="menu-item">
-      <a href="/seminargruppenplan/">Seminarplan</a>
+    <li class="menu-item type-icon">
+      <a href="/seminargruppenplan/"><Icon name="line-md:list-3-filled"/>Seminarplan</a>
     </li>
-    <li class="menu-item">
-      <a href="/mensa/">Mensa</a>
+    <li class="menu-item type-icon">
+      <a href="/mensa/"><Icon name="line-md:coffee-half-empty-twotone-loop"/>Mensa</a>
     </li>
-    <li class="menu-item">
-      <a href="/karte/">Karte</a>
+    <li class="menu-item type-icon">
+      <a href="/karte/"><Icon name="line-md:map-marker-alt-twotone-loop"/>Karte</a>
     </li>
-    <li class="menu-item has-dropdown">
-      <button aria-haspopup="true" aria-expanded="false">Werkzeuge</button>
+    <li class="menu-item has-dropdown type-icon">
+      <button aria-haspopup="true" aria-expanded="false"><Icon name="line-md:cog-loop"/>Werkzeuge</button>
       <ul class="dropdown-menu">
         <li class="submenu-item">
           <a href="/colorpicker">Farbauswahl</a>
@@ -45,8 +45,8 @@ const {
         </li>
       </ul>
     </li>
-    <li class="menu-item has-dropdown">
-      <button aria-haspopup="true" aria-expanded="false">Wiki</button>
+    <li class="menu-item has-dropdown type-icon">
+      <button aria-haspopup="true" aria-expanded="false"><Icon name="line-md:text-box-multiple"/>Wiki</button>
       <ul class="dropdown-menu">
         <li class="submenu-item">
           <p>Das Programmier-1-mal-1</p>
@@ -65,8 +65,8 @@ const {
         </li>
       </ul>
     </li>
-    <li class="menu-item has-dropdown">
-      <button aria-haspopup="true" aria-expanded="false">Weitere Links</button>
+    <li class="menu-item has-dropdown type-icon">
+      <button aria-haspopup="true" aria-expanded="false"><Icon name="line-md:external-link"/>Weitere Links</button>
       <ul class="dropdown-menu">
         <li class="submenu-item">
           <a rel="noopener noreferrer external" target="_blank" href="https://imweb.imn.htwk-leipzig.de/~schwarz/lehre/ws24/modellierung/">Modellierung Frau Schwarz</a>
@@ -94,13 +94,19 @@ const {
 <script>
   import { getISOWeek } from 'date-fns';
 
-  const lerngruppenraeume = document.getElementById('lerngruppenraeume');
-  let currentWeek = getISOWeek(new Date());
-  if (new Date().getMonth() <= 3) currentWeek += 52; // Planungswochen werden auch nach dem Jahreswechsel fortlaufend nummeriert
+  function setLerngruppenraumURL() {
+    const lerngruppenraeume = document.getElementById('lerngruppenraeume');
+    let currentWeek = getISOWeek(new Date());
+    if (new Date().getMonth() <= 3) currentWeek += 52; // Planungswochen werden auch nach dem Jahreswechsel fortlaufend nummeriert
 
-  if (lerngruppenraeume && lerngruppenraeume instanceof HTMLAnchorElement) {
-    lerngruppenraeume.href = `https://stundenplan.htwk-leipzig.de/ws/Berichte/Text-Listen;Module;id;%23SPLUSCC3F4C?template=sws_modul_js&weeks=_${currentWeek}`;
+    if (lerngruppenraeume && lerngruppenraeume instanceof HTMLAnchorElement) {
+      lerngruppenraeume.href = `https://stundenplan.htwk-leipzig.de/ws/Berichte/Text-Listen;Module;id;%23SPLUSCC3F4C?template=sws_modul_js&weeks=_${currentWeek}`;
+    }
   }
+  setLerngruppenraumURL();
+  document.addEventListener('astro:after-swap', () => {
+    setLerngruppenraumURL();
+  })
 </script>
 
 <style lang="scss" is:global>
@@ -114,12 +120,12 @@ const {
     }
 
     .type-icon a {
-      display: block;
+      display: flex;
 
       [data-icon] {
         height: auto;
-        margin-top: -2px;
-        width: 28px;
+        margin-right: 4px;
+        width: 20px;
 
         path {
           fill: var(--action-color);
@@ -130,9 +136,6 @@ const {
         [data-icon] path {
           fill: var(--action-color-state);
         }
-      }
-      &:is(.darkmode *) {
-        background-color: rgba(18, 18, 18, 0.75);
       }
     }
   }

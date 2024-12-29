@@ -20,14 +20,20 @@ const { icon = 'mdi:rocket', title = 'Title', href = "", subtitle } = Astro.prop
 </div>
 
 <script>
-  const feature = document.getElementsByClassName("feature");
+  function addHoverSound() {
+    const feature = document.getElementsByClassName("feature");
   
-  for (var i = 0; i < feature.length; i++) {
-    const audio = feature[i].querySelector(':scope > .hover-sound');
-    feature[i].addEventListener("mouseenter", function() {
-      if (audio instanceof HTMLAudioElement) audio.play();
-    });
+    for (var i = 0; i < feature.length; i++) {
+      const audio = feature[i].querySelector(':scope > .hover-sound');
+      feature[i].addEventListener("mouseenter", function() {
+        if (audio instanceof HTMLAudioElement) audio.play();
+      });
+    }
   }
+  addHoverSound();
+  document.addEventListener('astro:after-swap', () => {
+    addHoverSound();
+  })
 </script>
 
 <style lang="scss">
