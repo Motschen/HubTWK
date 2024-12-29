@@ -19,7 +19,9 @@ import { Icon } from 'astro-icon/components'
       </nav>
     </div>
     <FancyDarkMode />
-    <ResponsiveToggle />
+    <div class="h-8 w-8 pt-[0.315rem]">
+      <ResponsiveToggle />
+    </div>
     <nav class="mobile-menu" aria-label="Main navigation mobile">
       <ul class="menu">
         <slot />
@@ -317,9 +319,7 @@ import { Icon } from 'astro-icon/components'
 
       a,
       button {
-        display: block;
         width: 100%;
-        padding: 0.5rem 0;
       }
     }
 
