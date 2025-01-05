@@ -1,0 +1,59 @@
+---
+layout: ../../../layouts/MarkdownLayout.astro
+title: Programmieren mit Klassen
+---
+
+import { Icon } from 'astro-icon/components'
+import { Notification } from 'accessible-astro-components'
+import CustomTabs from "../../../components/CustomTabs.astro"
+
+# Programmier-1-mal-1: Klassen
+
+Klassen erlauben dir, Daten und Methoden miteinander in Verbindung zu setzen.
+
+## Hauptmethode
+In der Hauptmethode wird der Code definiert, welcher bei jedem Programmstart ausgeführt wird.
+<CustomTabs tabs={[{
+    name: `C++`,
+    icon: 'simple-icons:cplusplus',
+    id: 'cplusplus-main',
+    active: true
+}, {
+    name: `Java`,
+    icon: 'java',
+    id: 'java-main'
+}, {
+    name: `Python`,
+    icon: 'simple-icons:python',
+    id: 'python-main'
+}]}>
+    <div id="cplusplus-main" data-active="true">
+      
+      ```c
+      int main() {
+        // Dein Code
+
+        return 0;
+        // 0 als Rückgabewert bedeutet, dass das Programm erfolgreich beendet wurde.
+      }
+      ```
+    </div>
+    <div id="java-main" class="hidden">
+      ```java
+      public class Main {
+        public static void main(String[] args) {
+          // Dein Code
+        }
+      }
+      ```
+    </div>
+    <div id="python-main" class="hidden">
+      In Python gibt es keine explizite Hauptmethode.  
+      Den Einstiegspunkt definiert man hier über folgendes Konstrukt:
+      <br/>
+      ```python
+      if __name__ == '__main__':
+        # Dein Code
+      ```
+    </div>
+</CustomTabs>
