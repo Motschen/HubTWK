@@ -50,11 +50,13 @@ import { Icon } from 'astro-icon/components'
 
         // Adds every following week to the selector
         for (var i = Math.max(currentWeek-1, 1); i <= 61; i++) {
+          let weekOfYear = i;
+          if (weekOfYear > 52) weekOfYear -= 52;
           let weekName = 'Woche '+i;
           if (!isWeekend(currentDate) && i === currentWeek) weekName += ' (aktuelle Woche)';
           else if (isWeekend(currentDate) && i === currentWeek+1) weekName += ' (kommende Woche)';
           else {
-            let otherWeek = setISOWeek(new Date(), i);
+            let otherWeek = setISOWeek(new Date(), weekOfYear);
             weekName += ' ('+startOfISOWeek(otherWeek).toLocaleDateString('de-DE') + ' - ' + endOfISOWeek(otherWeek).toLocaleDateString('de-DE')+')';
           }
           weekSelector.options[weekSelector.options.length] = new Option(weekName, i.toString());
