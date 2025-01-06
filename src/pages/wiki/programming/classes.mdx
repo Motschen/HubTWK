@@ -9,51 +9,209 @@ import CustomTabs from "../../../components/CustomTabs.astro"
 
 # Programmier-1-mal-1: Klassen
 
-Klassen erlauben dir, Daten und Methoden miteinander in Verbindung zu setzen.
+Klassen sind besonders nutzlich, wenn verschiedene Eigenschaften in gebündelter Form gespeichert/verarbeitet werden sollen.  
+In ihnen können Daten, sowie Methoden abgelegt werden.
 
-## Hauptmethode
-In der Hauptmethode wird der Code definiert, welcher bei jedem Programmstart ausgeführt wird.
+## Einfache Klasse
 <CustomTabs tabs={[{
     name: `C++`,
     icon: 'simple-icons:cplusplus',
-    id: 'cplusplus-main',
+    id: 'cplusplus-class',
     active: true
 }, {
     name: `Java`,
     icon: 'java',
-    id: 'java-main'
+    id: 'java-class'
 }, {
     name: `Python`,
     icon: 'simple-icons:python',
-    id: 'python-main'
+    id: 'python-class'
 }]}>
-    <div id="cplusplus-main" data-active="true">
-      
-      ```c
+    <div id="cplusplus-class" data-active="true">
+      ```c++
+      #include <iostream>
+      #include <string>
+
+      using namespace std;
+
+      class Animal {
+        public:
+          Animal(string latinName) {
+            this->latinName = latinName;
+          }
+          Animal(string latinName, string englishName) {
+            this->latinName = latinName;
+            this->englishName = englishName;
+          }
+          string getLatinName() {
+            return latinName;
+          }
+          string getEnglishName() {
+            return englishName != null ? englishName : latinName;
+          }
+          virtual bool canFly() {
+            return false;
+          }
+        private:
+          string latinName;
+          string englishName = null;
+      };
       int main() {
-        // Dein Code
+        Animal squirrel = Animal("Sciuridae", "Squirrel");
+        std::cout << squirrel.getEnglishName();
 
         return 0;
-        // 0 als Rückgabewert bedeutet, dass das Programm erfolgreich beendet wurde.
       }
       ```
     </div>
-    <div id="java-main" class="hidden">
+    <div id="java-class" class="hidden">
       ```java
       public class Main {
+        public static class Animal {
+          private String latinName;
+          private String englishName = null;
+
+          public Animal(String latinName) {
+            this.latinName = latinName;
+          }
+          public Animal(String latinName, String englishName) {
+            this(latinName);
+            this.englishName = englishName;
+          }
+          public String getLatinName() {
+            return latinName;
+          }
+          public String getEnglishName() {
+            return englishName != null ? englishName : latinName;
+          }
+          public boolean canFly() {
+            return false;
+          }
+        };
+
         public static void main(String[] args) {
-          // Dein Code
+          Animal squirrel = new Animal("Sciuridae", "Squirrel");
+          System.out.println(squirrel.getEnglishName());
         }
       }
       ```
     </div>
-    <div id="python-main" class="hidden">
-      In Python gibt es keine explizite Hauptmethode.  
-      Den Einstiegspunkt definiert man hier über folgendes Konstrukt:
-      <br/>
+    <div id="python-class" class="hidden">
       ```python
+      class Animal:
+        def __init__(self, latinName, englishName = None):
+          self.latinName = latinName
+          self.englishName = englishName
+        latinName = None
+        englishName = None
+
+        def getLatinName(self):
+          return self.latinName
+        def getEnglishName(self):
+          if (self.englishName != None): return self.englishName
+          return self.latinName
+        def canFly(self):
+          return False
+      
       if __name__ == '__main__':
-        # Dein Code
+        squirrel = Animal("Sciuridae", "Squirrel");
+        print(squirrel.getEnglishName());
+      ```
+    </div>
+</CustomTabs>
+
+## Subklasse
+Durch Subklassen lassen sich Klassen mit zusätzlicher Funktionalität erweitern.
+<CustomTabs tabs={[{
+    name: `C++`,
+    icon: 'simple-icons:cplusplus',
+    id: 'cplusplus-subclass',
+    active: true
+}, {
+    name: `Java`,
+    icon: 'java',
+    id: 'java-subclass'
+}, {
+    name: `Python`,
+    icon: 'simple-icons:python',
+    id: 'python-subclass'
+}]}>
+    <div id="cplusplus-subclass" data-active="true">
+      ```c++
+      class Bird : public Animal {
+        public:
+          Bird(string latinName, bool ableToFly) : Animal(latinName) {
+            this->ableToFly = ableToFly;
+          }
+          Bird(string latinName, string englishName, bool ableToFly) : Animal(latinName, englishName) {
+            this->ableToFly = ableToFly;
+          }
+          virtual bool canFly() {
+            return ableToFly;
+          }
+        private:
+          bool ableToFly;
+      };
+      int main() {
+        Animal squirrel = Animal("Sciuridae", "Squirrel");
+        cout << squirrel.getEnglishName() << "s " << (squirrel.canFly() ? "can" : "cannot") << " fly" << endl;
+        Bird penguin = Bird("Spheniscidae", "Penguin", false);
+        cout << penguin.getEnglishName() << "s " << (penguin.canFly() ? "can" : "cannot") << " fly" << endl;
+        Bird parrot = Bird("Psittaciformes", "Parrot", true);
+        cout << parrot.getEnglishName() << "s " << (parrot.canFly() ? "can" : "cannot") << " fly" << endl;
+
+        return 0;
+      }
+      ```
+    </div>
+    <div id="java-subclass" class="hidden">
+      ```java
+      public class Main {
+        public static class Bird extends Animal {
+          private boolean ableToFly;
+
+          public Bird(String latinName, boolean ableToFly) {
+            super(latinName); // Mit 'super' kann auf den Konstruktor, aber auch auf Funktionen der Elternklasse verwiesen werden
+            this.ableToFly = ableToFly;
+          }
+          public Bird(String latinName, String englishName, boolean ableToFly) {
+            super(latinName, englishName);
+            this.ableToFly = ableToFly;
+          }
+          @Override
+          public boolean canFly() {
+            return ableToFly;
+          }
+        };
+        public static void main(String[] args) {
+          Animal squirrel = new Animal("Sciuridae", "Squirrel");
+          System.out.println(squirrel.getEnglishName() + "s " + (squirrel.canFly() ? "can" : "cannot") + " fly");
+          Bird penguin = new Bird("Spheniscidae", "Penguin", false);
+          System.out.println(penguin.getEnglishName() + "s " + (penguin.canFly() ? "can" : "cannot") + " fly");
+          Bird parrot = new Bird("Psittaciformes", "Parrot", true);
+          System.out.println(parrot.getEnglishName() + "s " + (parrot.canFly() ? "can" : "cannot") + " fly");
+        }
+      }
+      ```
+    </div>
+    <div id="python-subclass" class="hidden">
+      ```python
+      class Bird(Animal):
+        def __init__(self, latinName, ableToFly, englishName = None):
+          super(Bird, self).__init__(latinName, englishName)
+          self.ableToFly = ableToFly
+        ableToFly = False
+
+        def canFly(self):
+          return self.ableToFly
+
+      if __name__ == '__main__':
+        squirrel = Animal("Sciuridae", "Squirrel");
+        print(f"{squirrel.getEnglishName()}s {"can" if squirrel.canFly() else "cannot"} fly");
+        penguin = Bird("Spheniscidae", False, "Penguin");
+        print(f"{penguin.getEnglishName()}s {"can" if penguin.canFly() else "cannot"} fly");
+        parrot = Bird("Psittaciformes", True, "Parrot");
+        print(f"{parrot.getEnglishName()}s {"can" if parrot.canFly() else "cannot"} fly");
       ```
     </div>
 </CustomTabs>
