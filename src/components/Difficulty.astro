@@ -1,0 +1,31 @@
+---
+
+export default interface Props {
+  difficulty: 'easy' | 'medium' | 'advanced' | 'hard'
+}
+enum DifficultyName {
+    easy = "Einfach",
+    medium = "Mittel",
+    advanced = "Fortgeschritten",
+    hard = "Schwer"
+}
+const { difficulty } = Astro.props
+---
+<span class={`difficulty-${difficulty} inline-block whitespace-nowrap rounded-[0.27rem] bg-primary-100 px-[0.65em] pb-[0.25em] pt-[0.35em] text-center align-middle text-[0.5em] font-bold leading-none text-black dark:text-black`}>
+    { DifficultyName[difficulty] }
+</span>
+
+<style lang="scss">
+  .difficulty-easy {
+    background-color: rgb(134 239 172);
+  }
+  .difficulty-medium {
+    background-color: rgb(254 240 138);
+  }
+  .difficulty-advanced {
+    background-color: rgb(196 181 253);
+  }
+  .difficulty-hard {
+    background-color: rgb(252 165 165);
+  }
+</style>

@@ -6,6 +6,7 @@ title: Einstieg in die Programmierung
 import { Icon } from 'astro-icon/components'
 import { Notification } from 'accessible-astro-components'
 import CustomTabs from "../../../components/CustomTabs.astro"
+import Difficulty from "../../../components/Difficulty.astro"
 import { Image } from "astro:assets";
 import intellij_idea from "../../../assets/img/intellij-idea.png";
 import vscodium from "../../../assets/img/vscodium.png";
@@ -16,7 +17,7 @@ Egal, ob du bereits eine Programmiersprache beherrschst, oder grade erst beginns
 Das Programmier-1-mal-1 ist (wie ein Programm :D) in verschiedene Abschnitte gegliedert.  
 Auf dieser Seite findest du erst einmal die Basics, bevor es in den weiteren Lektionen zur Sache geht.  
 
-## Wie schreibe ich eigentlich Code?
+## Wie schreibe ich eigentlich Code? <Difficulty difficulty='easy' />
 Mit der richigen Software wird das Programmieren zum Kinderspiel.  
 Der Code-Editor ist hierbei besonders wichtig.  
 
@@ -71,10 +72,7 @@ Hier empfiehlt sich aber, die passende Erweiterung für die gewünschte Programm
     </div>
 </CustomTabs>
 
-## Was bedeuten die ganzen Wörter :(
-
-
-## Die Datentypen
+## Die Datentypen <Difficulty difficulty='easy' />
 In jeder (modernen) Programmiersprache gibt es das Konzept von Datentypen.  
 Dabei werden diese entweder explizit deklariert (C++, Java, etc.) oder implizit bestimmt (Python, JavaScript, etc.).  
 Hier eine Liste mit den üblichen Datentypen, sowie ihrer Bezeichnung in der jeweiligen Programmiersprache:
@@ -124,6 +122,7 @@ Hier eine Liste mit den üblichen Datentypen, sowie ihrer Bezeichnung in der jew
       // Implizite Variablen (seit C++11)
       auto variable = "hiiii :) Ich werde automatisch als Zeichenkette erkannt!"
       ```
+      Siehe: [cppreference.com](https://en.cppreference.com/w/cpp/language/types)
     </div>
     <div id="java-datatypes" class="hidden">
       ```java
@@ -157,6 +156,7 @@ Hier eine Liste mit den üblichen Datentypen, sowie ihrer Bezeichnung in der jew
         var variable = "hiiii :) Ich werde automatisch als Zeichenkette erkannt!"
       }
       ```
+      Siehe: [docs.oracle.com](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html)
     </div>
     <div id="python-datatypes" class="hidden">
       In Python werden Datentypen generel implizit bestimmt.  
@@ -191,5 +191,6 @@ Hier eine Liste mit den üblichen Datentypen, sowie ihrer Bezeichnung in der jew
       var vektor = [69]; # Felder sind in Python bereits Vektoren
       vektor.append(420); // Wert von vektor ist jetzt [69, 420]
       ```
+      Siehe: [docs.python.org](https://docs.python.org/3/library/datatypes.html)
     </div>
 </CustomTabs>

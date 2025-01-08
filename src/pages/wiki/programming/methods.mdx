@@ -6,12 +6,13 @@ title: Programmieren mit Methoden
 import { Icon } from 'astro-icon/components'
 import { Notification } from 'accessible-astro-components'
 import CustomTabs from "../../../components/CustomTabs.astro"
+import Difficulty from "../../../components/Difficulty.astro"
 
 # Programmier-1-mal-1: Methoden
 
 Methoden erlauben dir, Code in Sinnabschnitte einzuteilen, und diesen wiederzuverwenden. 
 
-## Hauptmethode
+## Hauptmethode <Difficulty difficulty='easy' />
 In der Hauptmethode wird der Code definiert, welcher bei jedem Programmstart ausgeführt wird.
 <CustomTabs tabs={[{
     name: `C++`,
@@ -58,7 +59,7 @@ In der Hauptmethode wird der Code definiert, welcher bei jedem Programmstart aus
     </div>
 </CustomTabs>
 
-## Methoden mit Rückgabewert
+## Methoden mit Rückgabewert <Difficulty difficulty='medium' />
 Durch einen Rückgabewert lassen sich Berechnungen in einem seperaten Abschnitt des Quelltextes durchführen.  
 Das macht den Code nicht nur übersichtlicher, sondern erspart auch dir und dem Computer sehr viel Arbeit, da einmal definierte Methoden beliebig oft aufgerufen werden können.  
 
@@ -139,7 +140,7 @@ Hier geben wir einfach nur das Ergebnis in die Konsole aus.
     </div>
 </CustomTabs>
 
-## Methoden ohne Rückgabewert
+## Methoden ohne Rückgabewert <Difficulty difficulty='easy' />
 Wird kein Rückgabewert benötigt, können Methoden dennoch hilfreich sein, um ein Programm zu struktorieren.  
 Das folgende Beispiel gibt eine Zeichenkette mit vorangestelltem Pfeil in das Terminal aus.
 <CustomTabs tabs={[{
