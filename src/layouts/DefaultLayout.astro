@@ -4,6 +4,7 @@ import '../assets/scss/globals.scss'
 import SiteMeta from '../components/SiteMeta.astro'
 import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
+import { ClientRouter } from 'astro:transitions';
 
 const {
   title = 'HTWK Utils',
@@ -39,6 +40,7 @@ const {
     <main id="main-content" transition:animate="fade">
       <slot />
     </main>
+    <ClientRouter />
     {showFooter ? <Footer /> : ''}
     <style lang="scss" is:global>
       // theme settings
@@ -73,13 +75,9 @@ const {
       // sticky footer on low content pages
       html,
       body {
-        height: 100%;
-        overflow-x: hidden;
       }
 
       body {
-        display: flex;
-        flex-direction: column;
         color: var(--font-color);
         background-color: var(--background);
 

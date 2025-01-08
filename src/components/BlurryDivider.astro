@@ -1,0 +1,21 @@
+---
+interface Props {
+    vertical?: boolean    
+}
+const { vertical = false } = Astro.props
+// Inspired by: https://tw-elements.com/docs/standard/content-styles/dividers/
+---
+
+{!vertical ? 
+<hr class="my-12 h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:via-neutral-400" /> 
+    : 
+<div class="flex flex-1">
+    <slot name="left">
+        <p class="pe-6">Left</p>
+    </slot>
+    <div class="h-[250px] min-h-[1em] w-px self-stretch bg-gradient-to-tr from-transparent via-neutral-500 to-transparent opacity-25 dark:via-neutral-400"></div>
+    <slot name="right">
+        <p class="ps-6">Right</p>
+    </slot>
+</div>
+}
