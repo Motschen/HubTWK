@@ -1,0 +1,138 @@
+---
+interface Props {
+  firstTitle?: string
+  secondTitle?: string
+  sliderColor?: string
+  sliderShadowColor?: string
+}
+const { firstTitle, secondTitle, sliderColor = "white", sliderShadowColor = "black" } = Astro.props
+import { Icon } from 'astro-icon/components'
+---
+
+<image-comparison>
+  <section class="my-6 overflow-hidden">
+    <div class="relative">
+        <div class="left-half relative">
+            <div class="w-full">
+                <slot name="first-image" />
+            </div>
+            <slot name="first-title" >
+                <p class="absolute top-1/2 left-1 translate-x-1/2 -translate-y-1/2 text-2xl font-bold text-center bg-[var(--background)] px-2 py-1 rounded-md">{firstTitle}</p>
+            </slot>
+        </div>
+        <div class="right-half absolute left-0 top-0 right-0 h-full">
+            <div class="clip-area">
+                <div class="w-full">
+                    <slot name="second-image" />
+                </div>
+                <slot name="second-title">
+                    <p class="absolute top-1/2 right-1 -translate-x-1/2 -translate-y-1/2 text-2xl font-bold text-center bg-[var(--background)] px-2 py-1 rounded-md">{secondTitle}</p>
+                </slot>
+            </div>
+            <div class="handle-container px-4 top-0 absolute z-10 h-full">
+                <div class="divider w-0.5 h-full block" style=`background-color: ${sliderColor}; box-shadow: 0 0 8px ${sliderShadowColor};`/>
+                <div class="handle top-[50%] absolute pointer-events-none ml-[1px] w-8 h-8" id="handle" style=`color: ${sliderColor};`>
+                    <slot name="handle-icon">
+                        <Icon name="double-arrow-slider" width="32" height="32" />
+                    </slot>
+                </div>
+            </div>
+        </div>
+    </div>
+</image-comparison>
+
+<script>
+  // Define the behaviour for our new type of HTML element.
+  class ImageComparison extends HTMLElement {
+    connectedCallback() {
+        const buttons = this.querySelectorAll('.right-half');
+
+        buttons.forEach((button) => {
+            dragElement(button);
+        });
+
+        const clamp = (value, min, max) => Math.min(Math.max(value, min), max)
+
+        function dragElement(elmnt) {
+            elmnt.onmousedown = dragMouseDown;
+            elmnt.addEventListener("touchstart", () => {
+                elmnt.addEventListener("touchmove", elementTouch, false);
+            }, false);
+
+            function dragMouseDown(e) {
+                e = e || window.event;
+                e.preventDefault();
+
+                document.onmousemove = elementDrag;
+                document.onmouseup = closeDragElement;
+                
+                setProgress(e.clientX);
+            }
+
+            function setProgress(clientX) {
+                let rect = elmnt.getBoundingClientRect();
+                let progress = (clientX - rect.left) / elmnt.offsetWidth * 100;
+                progress = clamp(progress, 0, 100);
+                elmnt.style.setProperty('--progress', `${progress}%`);
+            }
+
+            function elementDrag(e) {
+                e = e || window.event;
+                e.preventDefault();
+
+                elmnt.style.setProperty('--transition-time', `0ms`);
+                elmnt.style.setProperty('cursor', 'col-resize');
+                setProgress(e.clientX);
+            }
+            function elementTouch(e) {
+                e = e || window.event;
+                e.preventDefault();
+
+                elmnt.addEventListener("touchend", closeDragElement, false);
+                elmnt.style.setProperty('--transition-time', `0ms`);
+                setProgress(e.touches[0].clientX);
+            }
+
+            function closeDragElement() {
+                // stop moving when mouse button is released:
+                document.onmouseup = null;
+                document.onmousemove = null;
+                elmnt.removeEventListener("touchend", closeDragElement, false);
+                elmnt.removeEventListener("touchmove", elementTouch, false);
+                elmnt.style.setProperty('--transition-time', '0.25s');
+                elmnt.style.setProperty('cursor', 'initial');
+            }
+        }
+    }
+  }
+
+  customElements.define('image-comparison', ImageComparison);
+</script>
+<style lang="scss" is:global>
+    image-comparison {
+        img {
+            max-width: 100%;
+            width: 100%;
+        }
+        .right-half {
+            --progress: 50%;
+            --transition-time: 0.25s;
+
+            .clip-area {
+                clip-path: inset(0 0 0 var(--progress));
+                transition: clip-path var(--transition-time);
+            }
+
+            .handle-container {
+                left: calc(var(--progress) - 1rem);
+                transition: left var(--transition-time),bottom var(--transition-time);
+
+                .handle {
+                    box-sizing: border-box;
+                    transform: translate(-50%, -50%);
+                    color: var(--action-color);
+                }
+            }
+        }
+    }
+</style>

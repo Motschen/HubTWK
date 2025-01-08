@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" basedOn="https://icon-sets.iconify.design/line-md/?icon-filter=double-arrow-horizontal" width="24" height="24" viewBox="0 0 24 24">
+	<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+		<path stroke-dasharray="8" stroke-dashoffset="8" d="M3 12l4 4M21 12l-4 4M3 12l4 -4M21 12l-4 -4">
+			<animate fill="freeze" attributeName="stroke-dashoffset" begin="0.0s" dur="0.3s" values="8;0" />
+		</path>
+	</g>
+</svg>
