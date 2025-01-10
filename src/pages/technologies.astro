@@ -4,13 +4,17 @@ import BlobBackground from '../components/BlobBackground.astro'
 import BlurryDivider from '../components/BlurryDivider.astro'
 import Image from 'astro/components/Image.astro'
 
-import frustrated_student from '../assets/img/frustrated_student.jpg'
-import happy_programmer from '../assets/img/happy_programmer.jpg'
+import astroLogoDark from '../assets/img/technologies/astro-logo-dark.svg'
+import astroLogoLight from '../assets/img/technologies/astro-logo-light-gradient.svg'
+import tailwindLogoDark from '../assets/img/technologies/tailwindcss-logo-dark.svg'
+import tailwindLogoLight from '../assets/img/technologies/tailwindcss-logo-light.svg'
+import weedLogo from '../assets/img/technologies/weed-logo.svg'
+import viteLogo from '../assets/img/technologies/vitejs-logo.svg'
 ---
 
-<DefaultLayout title="HubTWK – Präsentation" stickyHeader={false}>
+<DefaultLayout title="HubTWK – Genutzte Technologien" stickyHeader={false}>
   <div class="container">
-      <BlobBackground />
+    <BlobBackground />
     <div class="h-screen">
       <div class="my-auto sticky top-64 text-center">
         <svg id="hubtwk-logo" class="mx-auto pt-16" width="500" xmlns="http://www.w3.org/2000/svg" viewBox="0 100 500 270" xmlns:bx="https://boxy-svg.com">
@@ -31,51 +35,68 @@ import happy_programmer from '../assets/img/happy_programmer.jpg'
           </rect>
           <path d="M 280.361 342.108 L 250.059 244.808 L 268.963 244.808 L 286.199 302.215 Q 287.172 305.273 287.936 308.818 Q 288.701 312.362 289.257 315.698 Q 290.508 310.555 291.272 307.636 Q 292.037 304.717 293.01 302.076 L 309.412 260.098 L 324.841 260.098 L 340.826 302.076 Q 342.077 305.551 343.05 308.679 Q 344.023 311.806 344.718 314.864 Q 345.135 312.362 345.691 309.791 Q 346.247 307.219 347.776 301.937 L 364.873 244.808 L 383.638 244.808 L 353.197 342.108 L 340.131 342.108 L 316.362 285.257 L 293.566 342.108 Z M 399.061 342.108 L 399.061 244.808 L 417.131 244.808 L 417.131 288.454 L 460.638 244.808 L 483.295 244.808 L 441.456 285.535 L 484.824 342.108 L 462.862 342.108 L 429.224 297.489 L 417.131 309.304 L 417.131 342.108 Z" style="fill: var(--font-color);"/>
         </svg>
-        <h1>Das Programmier-Einmaleins</h1>
+        <h1>Genutzte Technologien</h1>
       </div>
     </div>
     
     <div class="h-screen">
       <BlurryDivider />
-      <div class="sticky top-64 text-center">
-        <h3>Der Einfache Einstieg in das Programmieren, <br />
-          von HTWK-Studierenden für HTWK-Studierende.</h3>
-        <h5>Diese Website wurde über die letzten Monate zusammengetragen.</h5>
-        <p> Unter Erstsemestern der HTWK gibt es oft große Erfahrungsunterschiede. Während der ein oder andere Student schon viele eigene Projekte verwirklicht hat, machen andere Studenten erst die allerersten Erfahrungen mit dem Terminal. 
-            Neben dem Angebot der Hochschule in Form von Vorlesungen, Seminaren und Praktikas, möchten wir eine weitere Lernalternative anbieten. 
-            </p>
+      <div class="sticky top-80 text-center">
+        <h3>Astro</h3>
+        <h5>Effiziente Webanwendungen durch Serverseitiges Rendering.</h5>
+        <Image class="pt-8 mx-auto dark:hidden" src={astroLogoDark} alt="Astro Logo" width={300} height={300} />
+        <Image class="pt-8 mx-auto hidden dark:block" src={astroLogoLight} alt="Astro Logo" width={300} height={300} />
       </div>
     </div>
 
     <div class="h-screen">
       <BlurryDivider />
-      <div class="sticky top-64 text-center">
-        <Image class="mx-auto rounded-lg" src= {frustrated_student} alt="frustrated_student" width={600} height={300}/>
-        
-        <p class="text-xs">Quelle: https://pixabay.com/photos/laptop-woman-education-study-young-3087585/</p>
-
-        <h3>Viele Studenten erleben Frusterscheinungen, <br>
-          wenn sie das erste mal Visual Studio benutzten.</h3>
-        <h5>Auch deshalb haben wir in den letzten Monaten am "Programmier-Einmaleins" gearbeitet.</h5>
-       
+      <div class="sticky top-80 text-center">
+        <h3>TailwindCSS</h3>
+        <h5>Elegante Zuweisung von CSS-Stilen.</h5>
+        <Image class="pt-8 mx-auto dark:hidden" src={tailwindLogoDark} alt="Tailwind Logo" width={300} height={300} />
+        <Image class="pt-8 mx-auto hidden dark:block" src={tailwindLogoLight} alt="Tailwind Logo" width={300} height={300} />
       </div>
     </div>
-  
 
     <div class="h-screen">
       <BlurryDivider />
-      <div class="sticky top-64 text-center">
-        <h3>C++, Java, Python, Visual Studio Code, IntelliJ IDEA</h3>
-        <h5>Anschauliche Beispiele, dargestellt mit verschieden Sprachen und Programmen</h5>
-        <p> Durch unseren interdisziplinären Anspruch können unsere Nutzer, übergreifende Kompetenzen erlangen und in der modernen Arbeitswelt herausstechen. </br> Nach dem Benutzen unserer Seite sehen unsere Studenten so aus</p>
-      
-        <Image class="mx-auto rounded-lg" src= {happy_programmer} alt="happy_prigrammer" width={600} height={300}/>
-        
-        <p class="text-xs">Quelle: https://pixabay.com/photos/computer-code-coding-programming-1828603/</p>
+      <div class="sticky top-72 text-center">
+        <h3>MDX</h3>
+        <h5>JavaScript-Komponenten in Markdown-basierten Seiten verwenden.</h5>
+        <svg class="mx-auto" viewBox="0 0 138 57" width={300} height={300}>
+          <title>MDX</title>
+          <g>
+            <rect width="136.5" height="55.5" x=".75" y=".75" rx="4.5" fill="currentColor" />
+            <g fill="none" stroke="var(--background)" strokeWidth="6">
+              <path d="M16.5 44V19L30.25 32.75l14-14v25" />
+              <path d="M70.5 40V10.75" />
+              <path d="M57 27.25L70.5 40.75l13.5-13.5" />
+              <path d="M122.5 41.24L93.25 12M93.5 41.25L122.75 12" />
+            </g>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <div class="h-screen">
+      <BlurryDivider />
+      <div class="sticky top-72 text-center">
+        <h3>Weed</h3>
+        <h5>420</h5>
+        <Image class="pt-8 mx-auto" src={weedLogo} alt="Weed Logo" width={300} height={300} />
+      </div>
+    </div>
+
+    <div class="h-screen">
+      <BlurryDivider />
+      <div class="sticky top-72 text-center">
+        <h3>Vite</h3>
+        <h5>Live-Vorschau und Auslieferung der Website</h5>
+        <Image class="pt-8 mx-auto" src={viteLogo} alt="Vite Logo" width={300} height={300} />
       </div>
     </div>
   </div>
-
 </DefaultLayout>
 
 <script>
