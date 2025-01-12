@@ -1,0 +1,156 @@
+---
+layout: ../../../layouts/MarkdownLayout.astro
+title: Herausforderung – Programmieren mit Methoden
+---
+
+import { Icon } from 'astro-icon/components'
+import { Notification } from 'accessible-astro-components'
+import CustomTabs from "../../../components/CustomTabs.astro"
+import Difficulty from "../../../components/Difficulty.astro"
+import ChapterButtons from "../../../components/ChapterButtons.astro"
+
+# Programmier-1-mal-1: Herausforderung – Klassen
+
+Du bist jetzt mit den grundlegenden Konzepten der Programmierung vertraut.  
+
+Nun sollst du selbst ein tatsächlich nützliches Programm mit Klassen schreiben.  
+Bist du dieser Herausforderung gewachsen?
+
+## Aufgabe II: Einkaufszettel erstellen <Difficulty difficulty='hard' />
+Schreibe ein Programm, bei dem wiederholt **Gegenstände eingegeben** werden.  
+Nach jedem Gegenstand soll außerdem die zugehörige Menge abgefragt werden – bei leerer Eingabe soll die Menge 1 sein.   
+
+Trenne es dabei in:
+- die Hauptmethode, in der eine Schleife wiederholt die nächste Methode aufruft und die Ergebnisse in einen Vektor speichert
+- eine Methode, in der die Eingabe für **einen** Gegenstand und die Menge erfolgt und das Ergebnis als Klasse zurückgegeben wird
+- eine Klasse, in der ein Gegenstand und die zugehörige Menge (jeweils als String) gespeichert werden
+
+<CustomTabs tabs={[{
+    name: `C++`,
+    icon: 'simple-icons:cplusplus',
+    id: 'cplusplus-previous',
+    active: true
+}, {
+    name: `Java`,
+    icon: 'java',
+    id: 'java-previous'
+}, {
+    name: `Python`,
+    icon: 'simple-icons:python',
+    id: 'python-previous'
+}]}>
+    <div id="cplusplus-previous" data-active="true">
+      Alle hier benötigten Strukturen wurden bereits in den vorherigen Lektionen und Aufgaben eingeführt.
+    </div>
+    <div id="java-previous" class="hidden">
+      Alle hier benötigten Strukturen wurden bereits in den vorherigen Lektionen und Aufgaben eingeführt.
+    </div>
+    <div id="python-previous" class="hidden">
+      Alle hier benötigten Strukturen wurden bereits in den vorherigen Lektionen und Aufgaben eingeführt.
+    </div>
+</CustomTabs>
+
+## Aufgabe III: Einkaufszettel ausgeben <Difficulty difficulty='hard' />
+Du hast erfolgreich eine Abfrage für die Einkaufsliste geschrieben!  
+
+Nun wollen wir die eingegebenen Daten auch schön visualisieren.  
+Sobald bei der Abfrage nach Gegenständen eine leere Eingabe erfolgt, soll daher der fertige Einkaufszettel in eine Markdown-Datei ausgegeben werden.  
+Dann soll eine Rückmeldung mit dem Speicherort der Datei ausgegeben und das Programm beendet werden.
+
+<CustomTabs tabs={[{
+    name: `Markdown`,
+    icon: 'simple-icons:markdown',
+    id: 'markdown-syntax',
+    active: true
+}]}>
+    <div id="markdown-syntax" data-active="true">
+      Die ausgegebene Markdown-Datei soll diesem Format folgen:
+      ```markdown
+      - [ ] 1 Apfel
+      - [ ] 2 Bananen
+      - [ ] 1L Hafermilch
+      - [ ] 100g Butter
+      ```
+      <br/>
+      Wenn diese Datei nun mit einem Markdown-Programm geöffnet wird, erscheint eine Liste, bei der man jeden Gegenstand abhaken kann.
+    </div>
+</CustomTabs>
+
+
+<CustomTabs tabs={[{
+    name: `C++`,
+    icon: 'simple-icons:cplusplus',
+    id: 'cplusplus-file',
+    active: true
+}, {
+    name: `Java`,
+    icon: 'java',
+    id: 'java-file'
+}, {
+    name: `Python`,
+    icon: 'simple-icons:python',
+    id: 'python-file'
+}]}>
+    <div id="cplusplus-file" data-active="true">
+      Du benötigst zusätzlich folgende Module der Standardbibliothek:
+      ```c++
+      #include <fstream>
+      ```
+      <br/>
+      Mit diesem Code lässt sich eine einfache Textdatei (Markdown ist schließlich Klartext) erstellen und beschreiben: 
+      ```c++
+      ofstream Einkaufszettel("einkauf.md");
+
+      // In die Datei hineinschreiben
+      Einkaufszettel << "- [ ] " << "1" << " " << "Birne" << endl;
+
+      // Datei schließen
+      Einkaufszettel.close();
+      ```
+      Siehe: [w3schools.com](https://www.w3schools.com/cpp/cpp_files.asp)
+    </div>
+    <div id="java-file" class="hidden">
+      Du benötigst zusätzlich folgende Module der Standardbibliothek:
+      ```java
+      import java.io.FileWriter;
+      import java.io.IOException;
+      ```
+      <br/>
+      Mit diesem Code lässt sich eine einfache Textdatei (Markdown ist schließlich Klartext) erstellen und beschreiben: 
+      ```java
+      try {
+        FileWriter einkaufszettel = new FileWriter("einkauf.md");
+
+        // In die Datei hineinschreiben
+        einkaufszettel.write("- [ ] "+ "1" + " "+ "Birne");
+
+        // Datei schließen
+        einkaufszettel.close();
+      } catch (IOException e) {
+        System.out.println("Ein Fehler ist aufgetreten :(");
+        e.printStackTrace();
+      }
+      ```
+      Siehe: [w3schools.com](https://www.w3schools.com/java/java_files_create.asp), [baeldung.com](https://www.baeldung.com/java-write-to-file)
+    </div>
+    <div id="python-file" class="hidden">
+      Mit diesem Code lässt sich eine einfache Textdatei (Markdown ist schließlich Klartext) erstellen und beschreiben: 
+      ```python
+      with open("einkauf.md", "w") as d:
+        d.write(f"- [ ] {menge} {gegenstand}")
+      ```
+      Siehe: [geeksforgeeks.org](https://www.geeksforgeeks.org/writing-to-file-in-python/)
+    </div>
+</CustomTabs>
+
+Viel Spaß mit deiner neuen automatisierten Einkaufsliste!  
+<div class="text-xl text-center">
+Du besitzt nun die grundlegenden Fähigkeiten der Programmierung.  
+Wir hoffen, dass dir unsere Beispiele auf dieser Reise von Nutzen waren.  
+Gib uns gerne einen Stern auf [GitHub](https://github.com/Motschen/HubTWK) :)  
+~ Martin und David
+</div>
+
+<ChapterButtons 
+  previous={{name:'Programmieren mit Klassen', id: 'programming/classes'}}
+/>
