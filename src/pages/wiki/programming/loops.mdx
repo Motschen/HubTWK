@@ -1,0 +1,172 @@
+---
+layout: ../../../layouts/MarkdownLayout.astro
+title: Programmieren mit Schleifen
+---
+
+import { Icon } from 'astro-icon/components'
+import { Notification } from 'accessible-astro-components'
+import CustomTabs from "../../../components/CustomTabs.astro"
+import Difficulty from "../../../components/Difficulty.astro"
+import ChapterButtons from "../../../components/ChapterButtons.astro"
+
+# Programmier-1-mal-1: Schleifen
+
+Schleifen führen Code wiederholt aus, bis ihre Abbruchbedingung erfüllt ist.  
+Aufgrund des Aufbaus eines Computers sind wiederholte Abläufe besonders effizient.
+
+## Zählschleife <Difficulty difficulty='easy' />
+Eine Zählschleife besteht aus einem Index, welcher vor oder nach jedem Durchlauf um einen definierten Wert erhöht wird.
+<CustomTabs tabs={[{
+    name: `C++`,
+    icon: 'simple-icons:cplusplus',
+    id: 'cplusplus-count-loop',
+    active: true
+}, {
+    name: `Java`,
+    icon: 'java',
+    id: 'java-count-loop'
+}, {
+    name: `Python`,
+    icon: 'simple-icons:python',
+    id: 'python-count-loop'
+}]}>
+    <div id="cplusplus-count-loop" data-active="true">
+      
+      ```c
+      #import <iostream>
+
+      for (int i = 0; i < 10; i++) {
+        std::cout << i << std::endl;
+      }
+      ```
+    </div>
+    <div id="java-count-loop" class="hidden">
+      ```java
+      for (int i = 0; i < 10; i++) {
+        System.out.println(i);
+      }
+      ```
+    </div>
+    <div id="python-count-loop" class="hidden">
+      ```python
+      for i in range(10):
+        print(i)
+      ```
+    </div>
+</CustomTabs>
+
+## Mengenschleife <Difficulty difficulty='easy' />
+Hier wird eine Operation für jedes Element einer Liste / eines Vektors / einer Map ausgeführt.
+<CustomTabs tabs={[{
+    name: `C++`,
+    icon: 'simple-icons:cplusplus',
+    id: 'cplusplus-set-loop',
+    active: true
+}, {
+    name: `Java`,
+    icon: 'java',
+    id: 'java-set-loop'
+}, {
+    name: `Python`,
+    icon: 'simple-icons:python',
+    id: 'python-set-loop'
+}]}>
+    <div id="cplusplus-set-loop" data-active="true">
+      
+      ```c
+      #import <iostream>
+      #import <vector>
+
+      std::vector<char> vektor = {'H', 'a', 'l', 'l', 'o', ' ', 'W', 'e', 'l', 't', ' ', ':', ')'};
+
+      for (char buchstabe : vektor) {
+        std::cout << buchstabe;
+      }
+      ```
+    </div>
+    <div id="java-set-loop" class="hidden">
+      ```java
+      char[] array = {'H', 'a', 'l', 'l', 'o', ' ', 'W', 'e', 'l', 't', ' ', ':', ')'};
+
+      for (char buchstabe : array) {
+        System.out.print(buchstabe);
+      }
+      ```
+    </div>
+    <div id="python-set-loop" class="hidden">
+      ```python
+      vektor = ['H', 'a', 'l', 'l', 'o', ' ', 'W', 'e', 'l', 't', ' ', ':', ')']
+
+      for buchstabe in vektor:
+        print(buchstabe, end=" ")
+      ```
+    </div>
+</CustomTabs>
+
+## Kopf- oder Fußgesteuerte Schleifen <Difficulty difficulty='easy' />
+Diese Schleifen werden solange ausgeführt, bis eine Abbruchbedingung erfüllt ist.  
+Dabei erfolgt bei kopfgesteuerten Schleifen die Abfrage vor jedem Durchlauf, bei fußgesteuerten Schleifen nach jedem Durchlauf.  
+Wenn du dir unsicher bist, nutze einfach die kopfgesteuerte Variante.
+<CustomTabs tabs={[{
+    name: `C++`,
+    icon: 'simple-icons:cplusplus',
+    id: 'cplusplus-while-loop',
+    active: true
+}, {
+    name: `Java`,
+    icon: 'java',
+    id: 'java-while-loop'
+}, {
+    name: `Python`,
+    icon: 'simple-icons:python',
+    id: 'python-while-loop'
+}]}>
+    <div id="cplusplus-while-loop" data-active="true">
+      
+      ```c
+      #import <iostream>
+
+      unsigned int i = 0;
+      while (i < 10) { // Kopfgesteuerte Schleife
+        std::cout << i << std::endl;
+        i++;
+      }
+
+      unsigned int j = 0;
+      do { // Fußgesteuerte Schleife
+        std::cout << j << std::endl;
+        j++;
+      } while (j < 10);
+      ```
+    </div>
+    <div id="java-while-loop" class="hidden">
+      ```java
+      int i = 0;
+      while (i < 10) { // Kopfgesteuerte Schleife
+        System.out.println(i);
+        i++;
+      }
+
+      int j = 0;
+      do { // Fußgesteuerte Schleife
+        System.out.println(j);
+        j++;
+      } while (j < 10);
+      ```
+    </div>
+    <div id="python-while-loop" class="hidden">
+      ```python
+      i = 0
+      while i < 10: # Kopfgesteuerte Schleife
+        print(i)
+        i += 1
+
+      # Fußgesteuerte Schleifen existieren in Python gar nicht erst
+      ```
+    </div>
+</CustomTabs>
+
+<ChapterButtons 
+  previous={{name:'Herausforderung: Methoden', id: 'programming/challenge-methods'}} 
+  next={{name: 'Programmieren mit Klassen', id:'programming/classes'}} 
+/>
