@@ -16,9 +16,12 @@ Bist du dieser Herausforderung gewachsen?
 
 ## Aufgabe I <Difficulty difficulty='advanced' />
 Schreibe ein Programm, bei dem ein **Wort eingegeben** wird, von welchem dann die **Anzahl der Buchstaben** ausgegeben wird.  
-Trenne es dabei in die Hauptmethode, eine Methode ohne Rückgabewert, die die Eingabe regelt, sowie eine Methode mit einer ganzen Zahl als Rückgabewert, die die Anzahl der Buchstaben berechnet.
 
-Tipps:
+Trenne es dabei in:
+- die Hauptmethode
+- eine Methode ohne Rückgabewert, die die Eingabe regelt
+- eine Methode mit einer ganzen Zahl als Rückgabewert, die die Anzahl der Buchstaben berechnet  
+
 <CustomTabs tabs={[{
     name: `C++`,
     icon: 'simple-icons:cplusplus',
@@ -35,30 +38,38 @@ Tipps:
 }]}>
     <div id="cplusplus-main" data-active="true">
       Du benötigst folgende Module der Standardbibliothek:
-      ```c
+      ```c++
       #include <string>
       #include <iostream>
-
-      
+      ```
+      <br/>
+      Zum Einlesen kannst du folgenden Schnipsel nutzen:
+      ```c++
+      std::string eingabe;
+      std::cin >> eingabe;
       ```
     </div>
     <div id="java-main" class="hidden">
+      Du benötigst folgende Module der Standardbibliothek:
       ```java
-      public class Main {
-        public static void main(String[] args) {
-          // Dein Code
-        }
-      }
+      import java.util.Scanner;
       ```
+      <br/>
+      Zum Einlesen kannst du folgenden Schnipsel nutzen:
+      ```java
+      Scanner scan = new Scanner(System.in);
+      String eingabe = scan.nextLine();
+      ```
+      <br/>
+      Siehe: [geeksforgeeks.org](https://www.geeksforgeeks.org/ways-to-read-input-from-console-in-java/)
     </div>
     <div id="python-main" class="hidden">
-      In Python gibt es keine explizite Hauptmethode.  
-      Den Einstiegspunkt definiert man hier über folgendes Konstrukt:
-      <br/>
+      Zum Einlesen kannst du folgenden Schnipsel nutzen:
       ```python
-      if __name__ == '__main__':
-        # Dein Code
+      eingabe = str(input())
       ```
+      <br/>
+      Siehe: [geeksforgeeks.org](https://www.geeksforgeeks.org/taking-input-from-console-in-python/)
     </div>
 </CustomTabs>
 
