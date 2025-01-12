@@ -8,7 +8,7 @@ import reiter_wiki from '../assets/img/concept/reiter_wiki.png'
 import reading from '../assets/img/concept/reading.jpg'
 import css_colors from '../assets/img/concept/css_colors.png'
 import boxen from '../assets/img/concept/boxen.png'
-
+import Lexend from '../assets/img/concept/Lexend.webp'
 ---
 
 <DefaultLayout title="HubTWK – Präsentation" stickyHeader={false}>
@@ -131,16 +131,11 @@ import boxen from '../assets/img/concept/boxen.png'
         </br>
         </br>
         Violett: Die Farbe steht für Kraft und Transformation,
-        </br> ist somit symbolisch für die digitale Transformation in Deutschland, die durch diesen Studiengang voran getragen wird.
+        </br> ist somit symbolisch für die digitale Transformation in Deutschland, die durch diesen Studiengang vorangetragen wird.
         </p>
         <p class="text-xs">Quelle: https://alpina-farben.de/artikel/farbsymbolik-bedeutung-violett-lila/</p>
         </br>
-        <p> Außerdem benutzen wir einen besonderen Font. </br>
-        Lexend verspricht auf ihrer Website, dass die Verwendung dieses Fonts die Lese-Geschwindigkeit erhöht. </br> 
-        Damit wird auch Menschen mit Lese-Beeinträchtigung die Nutzung unserer Website ermöglicht. 
-        </p>
-        <p class="text-xs">Quelle: https://www.lexend.com/</p>
-        
+ 
 
       </div>
     </div>
@@ -156,17 +151,38 @@ import boxen from '../assets/img/concept/boxen.png'
         </br>  Beim Wiki sind die Texte linksbündig. 
            Linksbündigkeit ist besser zum Lernen und Verstehen. 
         </br> 
-          Außerdem passt es besser zu den Code-Beispielen da Code auch immer ausschließlich linksbündig geschrieben wird.
+          Außerdem passt es besser zu den Code-Beispielen, da Code auch  ausschließlich linksbündig geschrieben wird.
         </p>
         <p class="text-xs">Quelle: ttps://www.onlineprinters.de/magazin/textausrichtung-zeilenlaenge/
         </p>
         </br>
+        <p> Wir benutzen eine besondere Schriftart. </br>
+          Lexend verspricht auf ihrer Website, dass die Verwendung dieser Schriftart die Lese-Geschwindigkeit erhöht. </br> 
+          Damit wird auch Menschen mit Lese-Beeinträchtigung die Nutzung unserer Website ermöglicht. 
+          </p>
+          <Image class="mx-auto rounded-lg" src= {Lexend} alt="Lexend" width={300} height={150}/>
+          <p class="text-xs">Quelle: https://www.lexend.com/</p>
+          
         </br>
-       </br>
+  
+      </div>
+    </div>
+
+    <div class="h-screen">
+      <BlurryDivider />
+      <div class="sticky top-64 text-center">
+ 
+ 
         <h3>Proportionen, Abstände 
         </h3> 
-        <p>Viele Abstände und Proportionen sind durch Markdown schon festgelegt.
-        </br>Andere haben wir über Tailwind CSS festgelegt.  Diese finden sich im Quellcode.
+
+        <p>Bei der Wahl der Abstände war unser Ziel, ein möglichst komfortables Leseerlebnis zu erschaffen,
+        </br>bei dem regelmäßig nach Sinnabschnitten Raum für eine Lesepause gelassen wird.
+        </br>Dank TailwindCSS konnten wir diese für jedes Element individuell festlegen und optimieren.
+        </br>Die Proportionen haben wir an verschiedene Gerätetypen angepasst:
+        </br>Auf Smartphones und kleinen Tablets nutzen wir die volle Breite des Bildschirms und ordnen viele Elemente vertikal an.
+        </br>Auf größeren Bildschirmen beschränken wir die Seitenbreite künstlich.
+        </br>Das macht das Lesen der Seite angenehmer und sorgt dafür, dass der Abstand zwischen Elementen nicht übermäßig groß wird.
         </p>
 
       </div>
