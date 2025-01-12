@@ -1,0 +1,68 @@
+---
+layout: ../../../layouts/MarkdownLayout.astro
+title: Herausforderung – Programmieren mit Methoden
+---
+
+import { Icon } from 'astro-icon/components'
+import { Notification } from 'accessible-astro-components'
+import CustomTabs from "../../../components/CustomTabs.astro"
+import Difficulty from "../../../components/Difficulty.astro"
+import ChapterButtons from "../../../components/ChapterButtons.astro"
+
+# Programmier-1-mal-1: Herausforderung – Methoden
+
+Nun sollst du selbst mit Methoden programmieren.
+Bist du dieser Herausforderung gewachsen?  
+
+## Aufgabe I <Difficulty difficulty='advanced' />
+Schreibe ein Programm, bei dem ein **Wort eingegeben** wird, von welchem dann die **Anzahl der Buchstaben** ausgegeben wird.  
+Trenne es dabei in die Hauptmethode, eine Methode ohne Rückgabewert, die die Eingabe regelt, sowie eine Methode mit einer ganzen Zahl als Rückgabewert, die die Anzahl der Buchstaben berechnet.
+
+Tipps:
+<CustomTabs tabs={[{
+    name: `C++`,
+    icon: 'simple-icons:cplusplus',
+    id: 'cplusplus-main',
+    active: true
+}, {
+    name: `Java`,
+    icon: 'java',
+    id: 'java-main'
+}, {
+    name: `Python`,
+    icon: 'simple-icons:python',
+    id: 'python-main'
+}]}>
+    <div id="cplusplus-main" data-active="true">
+      Du benötigst folgende Module der Standardbibliothek:
+      ```c
+      #include <string>
+      #include <iostream>
+
+      
+      ```
+    </div>
+    <div id="java-main" class="hidden">
+      ```java
+      public class Main {
+        public static void main(String[] args) {
+          // Dein Code
+        }
+      }
+      ```
+    </div>
+    <div id="python-main" class="hidden">
+      In Python gibt es keine explizite Hauptmethode.  
+      Den Einstiegspunkt definiert man hier über folgendes Konstrukt:
+      <br/>
+      ```python
+      if __name__ == '__main__':
+        # Dein Code
+      ```
+    </div>
+</CustomTabs>
+
+<ChapterButtons 
+  previous={{name: 'Programmieren mit Methoden', id:'programming/methods'}} 
+  next={{name:'Programmieren mit Klassen', id: 'programming/classes'}}
+/>

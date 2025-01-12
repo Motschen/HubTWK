@@ -7,6 +7,7 @@ import { Icon } from 'astro-icon/components'
 import { Notification } from 'accessible-astro-components'
 import CustomTabs from "../../../components/CustomTabs.astro"
 import Difficulty from "../../../components/Difficulty.astro"
+import ChapterButtons from "../../../components/ChapterButtons.astro"
 
 # Programmier-1-mal-1: Methoden
 
@@ -204,3 +205,8 @@ Das folgende Beispiel gibt eine Zeichenkette mit vorangestelltem Pfeil in das Te
       ```
     </div>
 </CustomTabs>
+
+<ChapterButtons 
+  previous={{name: 'Einstieg in die Programmierung', id:'programming/getting-started'}} 
+  next={{name:'Herausforderung: Methoden', id: 'programming/challenge-methods'}}
+/>

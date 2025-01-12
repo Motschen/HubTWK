@@ -7,6 +7,7 @@ import { Icon } from 'astro-icon/components'
 import { Notification } from 'accessible-astro-components'
 import CustomTabs from "../../../components/CustomTabs.astro"
 import Difficulty from "../../../components/Difficulty.astro"
+import ChapterButtons from "../../../components/ChapterButtons.astro"
 import { Image } from "astro:assets";
 import intellij_idea from "../../../assets/img/intellij-idea.png";
 import vscodium from "../../../assets/img/vscodium.png";
@@ -194,3 +195,7 @@ Hier eine Liste mit den üblichen Datentypen, sowie ihrer Bezeichnung in der jew
       Siehe: [docs.python.org](https://docs.python.org/3/library/datatypes.html)
     </div>
 </CustomTabs>
+
+<ChapterButtons 
+  next={{name: 'Programmieren mit Methoden', id:'programming/methods'}} 
+/>

@@ -1,0 +1,53 @@
+---
+interface Props {
+  previous?: {
+        name: string
+        id: string
+        label?: string
+        icon?: string
+    }
+  next?: {
+        name: string
+        id: string
+        label?: string
+        icon?: string
+    }
+}
+const { previous, next } = Astro.props
+import { Icon } from 'astro-icon/components'
+import BlurryDivider from './BlurryDivider.astro'
+---
+<section class="w-full">
+    <BlurryDivider />
+    <div class="w-fit md:w-full flex flex-col md:flex-row mx-auto">
+    {
+        previous ? 
+            <a class={`max-w-96 button has-icon ml-0 mt-3 content-left lg:mt-0 lg:ml-3 rounded-md text-white hover:cursor-pointer appearance-none h-16`} href={"/wiki/"+previous.id}>
+                <div class="flex">
+                    <Icon name={previous.icon ? previous.icon : 'line-md:arrow-left'} class="mr-2 shrink-0" />
+                    <div class="leading-5">
+                        <p class="text-xs font-thin">{previous.label ? previous.label : "Vorherige Lektion"}</p>
+                        <p class="line-clamp-2">{previous.name}</p>
+                    </div>
+                </div>
+            </a>
+            
+        : ''
+    }
+    <div class="flex-grow hidden md:block" />
+    {
+        next ? 
+            <a class={`max-w-96 button has-icon bg-[var(--action-color)] ml-0 mt-3 lg:mt-0 lg:ml-3 rounded-md text-white hover:cursor-pointer appearance-none h-16`} href={"/wiki/"+next.id}>
+                <div class="flex">
+                    <div class="leading-5">
+                        <p class="text-xs font-thin">{next.label ? next.label : "Nächste Lektion"}</p>
+                        <p class="line-clamp-2">{next.name}</p>
+                    </div>
+                    <Icon name={next.icon ? next.icon : 'line-md:arrow-right'} class="shrink-0" />
+                </div>
+            </a>
+            
+        : ''
+    }
+    </div>
+</section>
