@@ -5,8 +5,9 @@ import BlurryDivider from '../components/BlurryDivider.astro'
 import ChapterButtons from '../components/ChapterButtons.astro'
 import { Image } from 'astro:assets'
 
-import frustrated_student from '../assets/img/frustrated_student.jpg'
-import happy_programmer from '../assets/img/happy_programmer.jpg'
+import code_editor from '../assets/img/presentation/code.jpg'
+import frustrated_student from '../assets/img/presentation/frustrated_student.jpg'
+import happy_programmer from '../assets/img/presentation/happy_programmer.jpg'
 ---
 
 <DefaultLayout title="HubTWK – Präsentation" stickyHeader={false}>
@@ -39,26 +40,27 @@ import happy_programmer from '../assets/img/happy_programmer.jpg'
     <div class="h-screen">
       <BlurryDivider />
       <div class="sticky top-64 text-center">
+        <Image class="drop-shadow-2xl mx-auto rounded-2xl -rotate-3 mb-8" src= {code_editor} alt="Ein Bildschirm mit einem Code-Editor, auf dem ein Vue.js-Projekt bearbeitet wird" width={600} height={300}/>
+        
         <h3>Der Einfache Einstieg in die Programmierung – <br />
           von HTWK-Studierenden für HTWK-Studierende.</h3>
         <h5>Diese Website wurde über die letzten Monate zusammengetragen.</h5>
-        <p> Unter Erstsemestern der HTWK gibt es oft große Erfahrungsunterschiede. Während der ein oder andere Student schon viele eigene Projekte verwirklicht hat, machen andere Studenten erst die allerersten Erfahrungen mit dem Terminal. 
-            Neben dem Angebot der Hochschule in Form von Vorlesungen, Seminaren und Praktikas, möchten wir eine weitere Lernalternative anbieten. 
-            </p>
+        <p>Unter Erstsemestern der HTWK gibt es oft große Erfahrungsunterschiede.</p>
+        <p>Während der ein oder andere schon viele eigene Projekte verwirklicht hat, machen andere Studenten die allerersten Erfahrungen mit dem Terminal.</p>
+        <p>Neben dem Angebot der Hochschule in Form von Vorlesungen, Seminaren und Praktikas, möchten wir eine weitere Lernalternative anbieten.</p>
+        <p class="text-xs mt-4">Bildquelle: <a href="https://unsplash.com/de/fotos/schwarzer-flachbildschirm-8qEB0fTe9Vw">unsplash.com</a></p>
       </div>
     </div>
 
     <div class="h-screen">
       <BlurryDivider />
       <div class="sticky top-64 text-center">
-        <Image class="mx-auto rounded-lg" src= {frustrated_student} alt="Ein Bild, auf dem eine frustrierte Studentin zu sehen ist" width={600} height={300}/>
-        
-        <p class="text-xs">Quelle: https://pixabay.com/photos/laptop-woman-education-study-young-3087585/</p>
+        <Image class="drop-shadow-2xl mx-auto rounded-2xl -rotate-2 mb-8" src= {frustrated_student} alt="Ein Bild, auf dem eine frustrierte Studentin zu sehen ist" width={600} height={300}/>
 
-        <h3>Viele Studenten erleben Frusterscheinungen, <br>
-          wenn sie das erste mal Visual Studio benutzten.</h3>
-        <h5>Auch deshalb haben wir in den letzten Monaten am "Programmier-Einmaleins" gearbeitet.</h5>
-       
+        <h3>Vielen Lernangeboten fehlt es an Interaktivität und Zusammenhang</h3>
+        <h5>Besonders Einsteiger verzweifeln dadurch recht schnell.</h5>
+        <p>Um dies zu lösen haben wir in den letzten Monaten am "Programmier-Einmaleins" gearbeitet.</p>
+        <p class="text-xs mt-4">Bildquelle: <a href="https://pixabay.com/photos/laptop-woman-education-study-young-3087585/">pixabay.com</a></p>
       </div>
     </div>
   
@@ -66,13 +68,13 @@ import happy_programmer from '../assets/img/happy_programmer.jpg'
     <div class="h-screen">
       <BlurryDivider />
       <div class="sticky top-64 text-center">
-        <h3>C++, Java, Python, Visual Studio Code, IntelliJ IDEA</h3>
-        <h5>Anschauliche Beispiele, dargestellt mit verschieden Sprachen und Programmen</h5>
-        <p> Durch unseren interdisziplinären Anspruch können unsere Nutzer, übergreifende Kompetenzen erlangen und in der modernen Arbeitswelt herausstechen. </br> Nach dem Benutzen unserer Seite sehen unsere Studenten so aus</p>
-      
-        <Image class="mx-auto rounded-lg" src= {happy_programmer} alt="Ein Bild, auf dem ein fröhlicher Programmierer zu sehen ist" width={600} height={300}/>
+        <Image class="drop-shadow-2xl mx-auto rounded-2xl rotate-6 mb-8" src= {happy_programmer} alt="Ein Bild, auf dem eine Gruppe fröhlicher Programmierer zu sehen ist" width={600} height={300}/>
         
-        <p class="text-xs">Quelle: https://pixabay.com/photos/computer-code-coding-programming-1828603/</p>
+        <h3>Es geht auch einfach</h3>
+        <h5>Anschauliche Beispiele, dargestellt mit verschieden Sprachen und Programmen</h5>
+        <p>Durch unseren interdisziplinären Anspruch können unsere Nutzer, übergreifende Kompetenzen erlangen und in der modernen Arbeitswelt herausstechen.</p>
+        <p>Wir erklären die Grundkonzepte der Programmierung in modernen Sprachen wie C++, Java und Python – und zwar parallel.</p>
+        <p class="text-xs mt-4">Bildquelle: <a href="https://pixabay.com/photos/computer-code-coding-programming-1828603">pixabay.com</a></p>
       </div>
     </div>
     <ChapterButtons 
