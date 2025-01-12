@@ -2,7 +2,8 @@
 import DefaultLayout from '../layouts/DefaultLayout.astro'
 import BlobBackground from '../components/BlobBackground.astro'
 import BlurryDivider from '../components/BlurryDivider.astro'
-import Image from 'astro/components/Image.astro'
+import ChapterButtons from '../components/ChapterButtons.astro'
+import { Image } from 'astro:assets'
 
 import astroLogoDark from '../assets/img/technologies/astro-logo-dark.svg'
 import astroLogoLight from '../assets/img/technologies/astro-logo-light-gradient.svg'
@@ -96,6 +97,10 @@ import viteLogo from '../assets/img/technologies/vitejs-logo.svg'
         <Image class="pt-8 mx-auto" src={viteLogo} alt="Vite Logo" width={300} height={300} />
       </div>
     </div>
+    <ChapterButtons 
+      previous={{name:'Start der Präsentation', label: "Vorherige Folie", url: '/presentation'}}
+      next={{name: 'Einstieg in die Programmierung', url: '/wiki/programming/getting-started'}}
+    />
   </div>
 </DefaultLayout>
 

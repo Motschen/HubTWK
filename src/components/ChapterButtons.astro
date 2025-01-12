@@ -2,13 +2,13 @@
 interface Props {
   previous?: {
         name: string
-        id: string
+        url: string
         label?: string
         icon?: string
     }
   next?: {
         name: string
-        id: string
+        url: string
         label?: string
         icon?: string
     }
@@ -22,7 +22,7 @@ import BlurryDivider from './BlurryDivider.astro'
     <div class="w-fit md:w-full flex flex-col md:flex-row mx-auto">
     {
         previous ? 
-            <a class={`max-w-96 button has-icon ml-0 mt-3 content-left lg:mt-0 lg:ml-3 rounded-md text-white hover:cursor-pointer appearance-none h-16`} href={"/wiki/"+previous.id}>
+            <a class={`max-w-96 button has-icon ml-0 mt-3 content-left lg:mt-0 lg:ml-3 rounded-md text-white hover:cursor-pointer appearance-none h-16`} href={previous.url}>
                 <div class="flex">
                     <Icon name={previous.icon ? previous.icon : 'line-md:arrow-left'} class="mr-2 shrink-0" />
                     <div class="leading-5">
@@ -37,7 +37,7 @@ import BlurryDivider from './BlurryDivider.astro'
     <div class="flex-grow hidden md:block" />
     {
         next ? 
-            <a class={`max-w-96 button has-icon bg-[var(--action-color)] ml-0 mt-3 lg:mt-0 lg:ml-3 rounded-md text-white hover:cursor-pointer appearance-none h-16`} href={"/wiki/"+next.id}>
+            <a class={`max-w-96 button has-icon bg-[var(--action-color)] ml-0 mt-3 lg:mt-0 lg:ml-3 rounded-md text-white hover:cursor-pointer appearance-none h-16`} href={next.url}>
                 <div class="flex">
                     <div class="leading-5">
                         <p class="text-xs font-thin">{next.label ? next.label : "Nächste Lektion"}</p>

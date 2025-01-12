@@ -2,7 +2,8 @@
 import DefaultLayout from '../layouts/DefaultLayout.astro'
 import BlobBackground from '../components/BlobBackground.astro'
 import BlurryDivider from '../components/BlurryDivider.astro'
-import Image from 'astro/components/Image.astro'
+import ChapterButtons from '../components/ChapterButtons.astro'
+import { Image } from 'astro:assets'
 
 import frustrated_student from '../assets/img/frustrated_student.jpg'
 import happy_programmer from '../assets/img/happy_programmer.jpg'
@@ -38,7 +39,7 @@ import happy_programmer from '../assets/img/happy_programmer.jpg'
     <div class="h-screen">
       <BlurryDivider />
       <div class="sticky top-64 text-center">
-        <h3>Der Einfache Einstieg in das Programmieren, <br />
+        <h3>Der Einfache Einstieg in die Programmierung – <br />
           von HTWK-Studierenden für HTWK-Studierende.</h3>
         <h5>Diese Website wurde über die letzten Monate zusammengetragen.</h5>
         <p> Unter Erstsemestern der HTWK gibt es oft große Erfahrungsunterschiede. Während der ein oder andere Student schon viele eigene Projekte verwirklicht hat, machen andere Studenten erst die allerersten Erfahrungen mit dem Terminal. 
@@ -50,7 +51,7 @@ import happy_programmer from '../assets/img/happy_programmer.jpg'
     <div class="h-screen">
       <BlurryDivider />
       <div class="sticky top-64 text-center">
-        <Image class="mx-auto rounded-lg" src= {frustrated_student} alt="frustrated_student" width={600} height={300}/>
+        <Image class="mx-auto rounded-lg" src= {frustrated_student} alt="Ein Bild, auf dem eine frustrierte Studentin zu sehen ist" width={600} height={300}/>
         
         <p class="text-xs">Quelle: https://pixabay.com/photos/laptop-woman-education-study-young-3087585/</p>
 
@@ -69,13 +70,15 @@ import happy_programmer from '../assets/img/happy_programmer.jpg'
         <h5>Anschauliche Beispiele, dargestellt mit verschieden Sprachen und Programmen</h5>
         <p> Durch unseren interdisziplinären Anspruch können unsere Nutzer, übergreifende Kompetenzen erlangen und in der modernen Arbeitswelt herausstechen. </br> Nach dem Benutzen unserer Seite sehen unsere Studenten so aus</p>
       
-        <Image class="mx-auto rounded-lg" src= {happy_programmer} alt="happy_prigrammer" width={600} height={300}/>
+        <Image class="mx-auto rounded-lg" src= {happy_programmer} alt="Ein Bild, auf dem ein fröhlicher Programmierer zu sehen ist" width={600} height={300}/>
         
         <p class="text-xs">Quelle: https://pixabay.com/photos/computer-code-coding-programming-1828603/</p>
       </div>
     </div>
+    <ChapterButtons 
+      next={{name:'Genutzte Technologien', label: "Nächste Folie", url: '/technologies'}}
+    />
   </div>
-
 </DefaultLayout>
 
 <script>
