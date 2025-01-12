@@ -1,5 +1,5 @@
 ---
-import { ViewTransitions } from 'astro:transitions'
+import { ClientRouter } from 'astro:transitions'
 
 const { title, description, url, image, author } = Astro.props
 
@@ -23,4 +23,4 @@ let subtitle = 'HTWK Utils'
 <!-- page title -->
 <title>{title} - {subtitle}</title>
 
-<ViewTransitions />
+<ClientRouter />
