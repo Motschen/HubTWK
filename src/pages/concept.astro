@@ -7,7 +7,7 @@ import Image from 'astro/components/Image.astro'
 import reiter_wiki from '../assets/img/concept/reiter_wiki.png'
 import reading from '../assets/img/concept/reading.jpg'
 import css_colors from '../assets/img/concept/css_colors.png'
-
+import boxen from '../assets/img/concept/boxen.png'
 
 ---
 
@@ -43,15 +43,15 @@ import css_colors from '../assets/img/concept/css_colors.png'
       <div class="sticky top-64 text-center">
         <h1>Inhalt</h1>
         <h3>Darstellung des Themas</h3>
-        <h5>Über Textabsätze, Überschriften, Bilder und Codebeispiele
+        <p>Über Textabsätze, Überschriften, Bilder und Codebeispiele
         </h5>
         <p> </p>
         <h3>Ziel der Präsentation</h3>
-        <h5>Einstieg in Konzepte des Programmierens mithilfe von Beispielen von geschriebenem Code. </br> 
+        <p>Einstieg in Konzepte des Programmierens mithilfe von Beispielen von geschriebenem Code. </br> 
          Alle Beispiele werden in mehreren Sprachen erklärt (C++, Java, Python)</br>
           Einblick in die genutzten Frameworks und Hilfsprogramme </br>
           Einfach zugänglich für jedermann.
-        </h5>    
+        </p>    
       </div>
     </div>
 
@@ -73,13 +73,26 @@ import css_colors from '../assets/img/concept/css_colors.png'
     <div class="h-screen">
       <BlurryDivider />
       <div class="sticky top-64 text-center">
-        <h1>Navigationsstruktur</h1>
-        <h3>Die Wikiseiten und Herausforderungsseiten sind durch einen Reiter zu finden</h3>
+        <h3>Navigationsstruktur</h3>
+        <p>Die Wikiseiten und Herausforderungsseiten sind durch einen Reiter zu finden</p>
         </br>
         <Image class="mx-auto rounded-lg" src= {reiter_wiki} alt="reiter_wiki" width={400} height={200}/>
         
         <p class="text-xs">Quelle: Screenshot</p>
-       
+
+      </div>
+    </div>
+    <div class="h-screen">
+      <BlurryDivider />
+      <div class="sticky top-64 text-center">
+
+
+        <p>Außerdem befinden sich am unteren Ende der Seiten Boxen,</br>
+        mit denen man zwischen den Seiten navigieren kann </p>
+
+        <Image class="mx-auto rounded-lg" src= {boxen} alt="boxen" width={1000} height={500}/>
+        
+        <p class="text-xs">Quelle: Screenshot</p>
       </div>
     </div>
     <div class="h-screen">
@@ -123,8 +136,8 @@ import css_colors from '../assets/img/concept/css_colors.png'
         <p class="text-xs">Quelle: https://alpina-farben.de/artikel/farbsymbolik-bedeutung-violett-lila/</p>
         </br>
         <p> Außerdem benutzen wir einen besonderen Font. </br>
-        Lexend verspricht auf ihrer Website, dass die Verwendung dieses Fonts die Lese-Geschwindigkeit erhöht </br> 
-        und es auch Menschen mit Lese-Beeinträchtigung ermöglicht unsere Website zu benutzen.
+        Lexend verspricht auf ihrer Website, dass die Verwendung dieses Fonts die Lese-Geschwindigkeit erhöht. </br> 
+        Damit wird auch Menschen mit Lese-Beeinträchtigung die Nutzung unserer Website ermöglicht. 
         </p>
         <p class="text-xs">Quelle: https://www.lexend.com/</p>
         
@@ -141,7 +154,7 @@ import css_colors from '../assets/img/concept/css_colors.png'
         <p> Bei den Präsentationsfolien sind die Texte zentriert
           → Dient dem Gedanke einer Präsentation.
         </br>  Beim Wiki sind die Texte linksbündig. 
-           Linksbündigkeit ist besser zum Lernen und verstehen. 
+           Linksbündigkeit ist besser zum Lernen und Verstehen. 
         </br> 
           Außerdem passt es besser zu den Code-Beispielen da Code auch immer ausschließlich linksbündig geschrieben wird.
         </p>
