@@ -2,6 +2,7 @@
 import DefaultLayout from '../layouts/DefaultLayout.astro'
 import BlobBackground from '../components/BlobBackground.astro'
 import BlurryDivider from '../components/BlurryDivider.astro'
+import ChapterButtons from '../components/ChapterButtons.astro'
 import Image from 'astro/components/Image.astro'
 
 import reiter_wiki from '../assets/img/concept/reiter_wiki.png'
@@ -187,10 +188,11 @@ import Lexend from '../assets/img/concept/Lexend.webp'
 
       </div>
     </div>
+    <ChapterButtons 
+      previous={{name:'Genutzte Technologien', label: "Vorherige Folie", url: '/technologies'}}
+      next={{name: 'Einstieg in die Programmierung', url: '/wiki/programming/getting-started'}}
+    />
   </div>
-
-  
-
 </DefaultLayout>
 
 <script>
