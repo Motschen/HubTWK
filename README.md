@@ -1,1 +1,1 @@
-# New Website for Motschen's Projects
+# Useful tools and guides for students at HTWK Leipzig
