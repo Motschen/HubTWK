@@ -6,6 +6,7 @@ import Image from 'astro/components/Image.astro'
 
 import reiter_wiki from '../assets/img/concept/reiter_wiki.png'
 import reading from '../assets/img/concept/reading.jpg'
+import css_colors from '../assets/img/concept/css_colors.png'
 
 
 ---
@@ -46,12 +47,11 @@ import reading from '../assets/img/concept/reading.jpg'
         </h5>
         <p> </p>
         <h3>Ziel der Präsentation</h3>
-        <h5>Einstieg in Konzepte des Programmierens mithilfe von Beispielen von geschriebenem Code. </br> Alle Beispiele werden in mehreren Sprachen erklärt (C++, Java, Python)
-        </h5>
-        <p> Alle Beispiele werden in mehreren Sprachen erklärt (C++, Java, Python)</br>
+        <h5>Einstieg in Konzepte des Programmierens mithilfe von Beispielen von geschriebenem Code. </br> 
+         Alle Beispiele werden in mehreren Sprachen erklärt (C++, Java, Python)</br>
           Einblick in die genutzten Frameworks und Hilfsprogramme </br>
-          Einfach zugänglich für jedermann
-            </p>
+          Einfach zugänglich für jedermann.
+        </h5>    
       </div>
     </div>
 
@@ -79,7 +79,6 @@ import reading from '../assets/img/concept/reading.jpg'
         <Image class="mx-auto rounded-lg" src= {reiter_wiki} alt="reiter_wiki" width={400} height={200}/>
         
         <p class="text-xs">Quelle: Screenshot</p>
-        <p> Die anderen Seiten findet man durch eine spezielle URL</p>
        
       </div>
     </div>
@@ -102,12 +101,66 @@ import reading from '../assets/img/concept/reading.jpg'
         <h1>Layout</h1>
         <h3>Kombination von Text und Bild 
         </h3>
-        <p>Meiste markante großte Überschrift, dann kurzer Text und großes Bild oder Code-Beispiel </p>
+        <p>Meiste markante großte Überschrift, dann kurzer Text und großes Bild oder Code-Beispiel
+        <br>
+        Bild oder Code Beispiel nicht von links oder rechts benachbart --> somit volle Aufmerksamkeit auf dem Bild. 
+        </p>
 
+        <h3>Farbkonzept 
+        </h3>
+        <p>Implementierter Dark-Mode und Lightmode
+        <br>
+        <Image class="mx-auto rounded-lg" src= {css_colors} alt="css_colors" width={400} height={200}/>
         
+        <p class="text-xs">Quelle: Der Code des Projekts</p>
+        </br>
+        Grundfarben: Schwarz, Weiß und Violett
+        </br>
+        </br>
+        Violett: Die Farbe steht für Kraft und Transformation,
+        </br> ist somit symbolisch für die digitale Transformation in Deutschland, die durch diesen Studiengang voran getragen wird.
+        </p>
+        <p class="text-xs">Quelle: https://alpina-farben.de/artikel/farbsymbolik-bedeutung-violett-lila/</p>
+        </br>
+        <p> Außerdem benutzen wir einen besonderen Font. </br>
+        Lexend verspricht auf ihrer Website, dass die Verwendung dieses Fonts die Lese-Geschwindigkeit erhöht </br> 
+        und es auch Menschen mit Lese-Beeinträchtigung ermöglicht unsere Website zu benutzen.
+        </p>
+        <p class="text-xs">Quelle: https://www.lexend.com/</p>
+        
+
+      </div>
+    </div>
+
+    <div class="h-screen">
+      <BlurryDivider />
+      <div class="sticky top-64 text-center">
+ 
+        <h3>Typografische Aspekte 
+        </h3> 
+        <p> Bei den Präsentationsfolien sind die Texte zentriert
+          → Dient dem Gedanke einer Präsentation.
+        </br>  Beim Wiki sind die Texte linksbündig. 
+           Linksbündigkeit ist besser zum Lernen und verstehen. 
+        </br> 
+          Außerdem passt es besser zu den Code-Beispielen da Code auch immer ausschließlich linksbündig geschrieben wird.
+        </p>
+        <p class="text-xs">Quelle: ttps://www.onlineprinters.de/magazin/textausrichtung-zeilenlaenge/
+        </p>
+        </br>
+        </br>
+       </br>
+        <h3>Proportionen, Abstände 
+        </h3> 
+        <p>Viele Abstände und Proportionen sind durch Markdown schon festgelegt.
+        </br>Andere haben wir über Tailwind CSS festgelegt.  Diese finden sich im Quellcode.
+        </p>
+
       </div>
     </div>
   </div>
+
+  
 
 </DefaultLayout>
 
