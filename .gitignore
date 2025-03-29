@@ -27,3 +27,4 @@ yarn-error.log*
 #package-lock.json
 .astro/settings.json
 /.astro
+bun.lock
