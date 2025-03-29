@@ -4,7 +4,7 @@ const { } = Astro.props
 import { Icon } from 'astro-icon/components'
 ---
 <seminar-auswahl>
-  <h2 id="current-semester" class="my-8 text-5l text-center">Wintersemester 2024/25</h2>
+  <h2 id="current-semester" class="my-8 text-5l text-center"></h2>
   <section class="my-6">
     <div class="">
       <p class="text-lg">Gib deine Seminargruppe ein:</p>
@@ -29,7 +29,8 @@ import { Icon } from 'astro-icon/components'
 </seminar-auswahl>
 
 <script>
-  import { getISOWeek, setISOWeek, startOfISOWeek, endOfISOWeek, isWeekend } from "date-fns";
+  import { setISOWeek, startOfISOWeek, endOfISOWeek, isWeekend } from "date-fns";
+  import { getCurrentWeek, isSummerSemester, currentSemesterName } from '../ts/semesterUtils';
 
   // Define the behaviour for our new type of HTML element.
   class Seminarauswahl extends HTMLElement {
@@ -38,15 +39,19 @@ import { Icon } from 'astro-icon/components'
       const gruppeInput = document.getElementById("gruppe-input");
       const weekSelector = document.getElementById("week-selector");
       const openButton = document.getElementById("open-button");
+      const currentSemester = document.getElementById("current-semester");
+
+      if (currentSemester) {
+        currentSemester.innerText = currentSemesterName();
+      }
 
       const initialGroup = localStorage.getItem('seminargruppe');
-      if (initialGroup && gruppeInput) {
+      if (initialGroup && gruppeInput instanceof HTMLInputElement) {
         gruppeInput.value = initialGroup;
       }
-      if (weekSelector) {
+      if (weekSelector instanceof HTMLSelectElement) {
         const currentDate = new Date();
-        let currentWeek = getISOWeek(new Date());
-        if (new Date().getMonth() <= 3) currentWeek += 52; // Planungswochen werden auch nach dem Jahreswechsel fortlaufend nummeriert
+        let currentWeek = getCurrentWeek();
 
         // Adds every following week to the selector
         for (var i = Math.max(currentWeek-1, 1); i <= 61; i++) {
@@ -61,8 +66,8 @@ import { Icon } from 'astro-icon/components'
           }
           weekSelector.options[weekSelector.options.length] = new Option(weekName, i.toString());
         }
-        if (isWeekend(currentDate)) weekSelector.value = Math.min(currentWeek+1, 61);
-        else weekSelector.value = currentWeek;
+        if (isWeekend(currentDate)) weekSelector.value = Math.min(currentWeek+1, 61).toString();
+        else weekSelector.value = currentWeek.toString();
       }
       
 
@@ -76,8 +81,8 @@ import { Icon } from 'astro-icon/components'
       openButton?.addEventListener('click', () => {
         let seminargruppe = localStorage.getItem('seminargruppe');
         let weekNumber;
-        if (weekSelector) weekNumber = weekSelector.value;
-        window.open(`https://stundenplan.htwk-leipzig.de/ws/Berichte/Text-Listen;Studenten-Sets;name;${seminargruppe}?template=sws_semgrp_js&weeks=${weekNumber}`);
+        if (weekSelector instanceof HTMLSelectElement) weekNumber = weekSelector.value;
+        window.open(`https://stundenplan.htwk-leipzig.de/${isSummerSemester() ? 'ss' : 'ws'}/Berichte/Text-Listen;Studenten-Sets;name;${seminargruppe}?template=sws_semgrp_js&weeks=${weekNumber}`);
       });
     }
   }

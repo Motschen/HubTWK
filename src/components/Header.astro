@@ -98,15 +98,14 @@ const {
 </header>
 
 <script>
-  import { getISOWeek } from 'date-fns';
+  import { isSummerSemester, getCurrentWeek } from '../ts/semesterUtils';
 
   function setLerngruppenraumURL() {
     const lerngruppenraeume = document.getElementById('lerngruppenraeume');
-    let currentWeek = getISOWeek(new Date());
-    if (new Date().getMonth() <= 3) currentWeek += 52; // Planungswochen werden auch nach dem Jahreswechsel fortlaufend nummeriert
+    let currentWeek = getCurrentWeek();
 
     if (lerngruppenraeume && lerngruppenraeume instanceof HTMLAnchorElement) {
-      lerngruppenraeume.href = `https://stundenplan.htwk-leipzig.de/ws/Berichte/Text-Listen;Module;id;%23SPLUSCC3F4C?template=sws_modul_js&weeks=_${currentWeek}`;
+      lerngruppenraeume.href = isSummerSemester() ? `https://stundenplan.htwk-leipzig.de/ss/Berichte/Text-Listen;Module;id;%23SPLUSCDB86B?template=sws_modul_js&weeks=${currentWeek}` : `https://stundenplan.htwk-leipzig.de/ws/Berichte/Text-Listen;Module;id;%23SPLUSCC3F4C?template=sws_modul_js&weeks=${currentWeek}`;
     }
   }
   setLerngruppenraumURL();
