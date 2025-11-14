@@ -24,3 +24,12 @@ export function currentSemesterName(): string {
     else semesterName += getSemesterStartYear();
     return semesterName;
 }
+
+export function getSemesterNumber(): number {
+    let semesterNumber = 98; // Wintersemester 2024/25
+    let initialStartYear = 2024;
+    semesterNumber += getSemesterStartYear() - initialStartYear;
+    if (!isSummerSemester()) semesterNumber++;
+
+    return semesterNumber;
+}

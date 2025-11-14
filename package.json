@@ -11,7 +11,7 @@
     "preview": "astro preview --host"
   },
   "devDependencies": {
-    "@astrojs/mdx": "^4.2.2",
+    "@astrojs/mdx": "^4.3.10",
     "@astrojs/partytown": "^2.1.4",
     "@astrojs/tailwind": "^6.0.2",
     "@iconify-json/ion": "^1.2.2",
@@ -21,7 +21,7 @@
     "@typescript-eslint/eslint-plugin": "^8.28.0",
     "@typescript-eslint/parser": "^8.28.0",
     "accessible-astro-components": "^2.4.0",
-    "astro": "^5.5.5",
+    "astro": "^5.15.6",
     "astro-compress": "^2.3.6",
     "astro-icon": "^1.1.5",
     "eslint": "^9.23.0",
@@ -35,7 +35,7 @@
     "tailwindcss": "^3.4.17"
   },
   "dependencies": {
-    "@astrojs/alpinejs": "^0.4.4",
+    "@astrojs/alpinejs": "^0.4.9",
     "@types/alpinejs": "^3.13.11",
     "@vite-pwa/assets-generator": "^0.2.6",
     "alpinejs": "^3.14.9",

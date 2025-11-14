@@ -69,7 +69,7 @@ import { Icon } from 'astro-icon/components'
         if (isWeekend(currentDate)) weekSelector.value = Math.min(currentWeek+1, 61).toString();
         else weekSelector.value = currentWeek.toString();
       }
-      
+
 
       gruppeInput?.addEventListener("input", async (e) => {
         const {
@@ -82,12 +82,17 @@ import { Icon } from 'astro-icon/components'
         let seminargruppe = localStorage.getItem('seminargruppe');
         let weekNumber;
         if (weekSelector instanceof HTMLSelectElement) weekNumber = weekSelector.value;
-        window.open(`https://stundenplan.htwk-leipzig.de/${isSummerSemester() ? 'ss' : 'ws'}/Berichte/Text-Listen;Studenten-Sets;name;${seminargruppe}?template=sws_semgrp_js&weeks=${weekNumber}`);
+        if (seminargruppe != null && seminargruppe != "") {
+          window.open(`https://stundenplan.htwk-leipzig.de/${isSummerSemester() ? 'ss' : 'ws'}/Berichte/Text-Listen;Studenten-Sets;name;${seminargruppe}?template=sws_semgrp_js&weeks=${weekNumber}`);
+        }
+        else {
+          window.alert("Bitte fülle das Seminargruppenfeld aus")
+        }
       });
     }
   }
 
-  
+
   // Tell the browser to use our ColorPicker class for <color-picker> elements.
   customElements.define('seminar-auswahl', Seminarauswahl);
 </script>

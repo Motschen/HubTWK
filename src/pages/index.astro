@@ -34,7 +34,7 @@ import BlobBackground from '../components/BlobBackground.astro'
             <FancyLink href="https://bildungsportal.sachsen.de/opal/shiblogin?1" icon="ion:create-outline" title="OPAL">
               Zentrale Verwaltung und Verteilung von Aufgaben für nahezu alle Kurse.
             </FancyLink>
-            <FancyLink href="https://autotool.imn.htwk-leipzig.de/new/semester/98/vorlesungen" icon="ion:checkmark-done-circle-outline" title="Autotool" subtitle="Wintersemester 2024/25">
+            <FancyLink id="autotool-link" href="#" icon="ion:checkmark-done-circle-outline" title="Autotool" subtitle="Semestername XX/XX">
               Von einigen Professor:innen für Aufgabenverteilung genutzt.<br>Entwickelt von Prof. Waldmann.
             </FancyLink>
             <FancyLink href="https://studium.htwk-leipzig.de/" icon="ion:golf-outline" title="Studienportal">
@@ -55,3 +55,26 @@ import BlobBackground from '../components/BlobBackground.astro'
     </div>
   </section>
 </DefaultLayout>
+
+<script>
+  import { getSemesterNumber, currentSemesterName } from '../ts/semesterUtils';
+
+  function setLerngruppenraumURL() {
+    const autotoolLink = document.getElementById('autotool-link');
+    let semester = getSemesterNumber();
+
+    let h6 = autotoolLink.querySelector('h6');
+    if (h6 instanceof HTMLHeadingElement) {
+      h6.innerText = currentSemesterName();
+    }
+
+    let a = autotoolLink.querySelector('a');
+    if (a instanceof HTMLAnchorElement) {
+      a.href = `https://autotool.imn.htwk-leipzig.de/new/semester/${semester}/vorlesungen`
+    }
+  }
+  setLerngruppenraumURL();
+  document.addEventListener('astro:after-swap', () => {
+    setLerngruppenraumURL();
+  })
+</script>

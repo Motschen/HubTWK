@@ -81,7 +81,7 @@ const {
       <button aria-haspopup="true" aria-expanded="false"><Icon name="line-md:link"/>Weitere Links</button>
       <ul class="dropdown-menu">
         <li class="submenu-item">
-          <a rel="noopener noreferrer external" target="_blank" href="https://imweb.imn.htwk-leipzig.de/~schwarz/lehre/ws24/modellierung/"><Icon name="mdi:graph"/>Modellierung Frau Schwarz</a>
+            <a id="modellierung-link" rel="noopener noreferrer external" target="_blank" href="https://imweb.imn.htwk-leipzig.de/~schwarz/lehre/ws24/modellierung/"><Icon name="mdi:graph"/>Modellierung Frau Schwarz</a>
         </li>
         <li class="submenu-item">
           <a rel="noopener noreferrer external" target="_blank" href="https://web.stanford.edu/class/cs103/tools/truth-table-tool/"><Icon name="mdi:table-check"/>Stanford Wahrheitswerttabellen</a>
@@ -90,7 +90,7 @@ const {
           <a rel="noopener noreferrer external" target="_blank" href="https://www.wolframalpha.com/"><Icon name="mdi:function-variant"/>Wolfram Alpha</a>
         </li>
         <li class="submenu-item">
-          <a id="lerngruppenraeume" rel="noopener noreferrer external" target="_blank" href=""><Icon name="mdi:google-classroom"/>Aktuell freie Gruppenräume</a> 
+          <a id="lerngruppenraeume-link" rel="noopener noreferrer external" target="_blank" href=""><Icon name="mdi:google-classroom"/>Aktuell freie Gruppenräume</a>
         </li>
       </ul>
     </li>
@@ -98,19 +98,25 @@ const {
 </header>
 
 <script>
-  import { isSummerSemester, getCurrentWeek } from '../ts/semesterUtils';
+  import { isSummerSemester, getCurrentWeek, getSemesterStartYear } from '../ts/semesterUtils';
 
-  function setLerngruppenraumURL() {
-    const lerngruppenraeume = document.getElementById('lerngruppenraeume');
+  function updateURLs() {
+    const lerngruppenraeume = document.getElementById('lerngruppenraeume-link');
     let currentWeek = getCurrentWeek();
 
-    if (lerngruppenraeume && lerngruppenraeume instanceof HTMLAnchorElement) {
+    if (lerngruppenraeume instanceof HTMLAnchorElement) {
       lerngruppenraeume.href = isSummerSemester() ? `https://stundenplan.htwk-leipzig.de/ss/Berichte/Text-Listen;Module;id;%23SPLUSCDB86B?template=sws_modul_js&weeks=${currentWeek}` : `https://stundenplan.htwk-leipzig.de/ws/Berichte/Text-Listen;Module;id;%23SPLUSCC3F4C?template=sws_modul_js&weeks=${currentWeek}`;
     }
+
+    const modellierung = document.getElementById('modellierung-link');
+    if (modellierung instanceof HTMLAnchorElement) {
+      let semester = (isSummerSemester() ? "ss" : "ws") + (getSemesterStartYear() - 2000)
+      modellierung.href = `https://imweb.imn.htwk-leipzig.de/~schwarz/lehre/${semester}/modellierung/`;
+    }
   }
-  setLerngruppenraumURL();
+  updateURLs();
   document.addEventListener('astro:after-swap', () => {
-    setLerngruppenraumURL();
+    updateURLs();
   })
 </script>
 
